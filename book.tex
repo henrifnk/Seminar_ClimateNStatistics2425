@@ -37,6 +37,46 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -119,6 +159,20 @@
 \makeatother
 
 \frontmatter
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -425,6 +479,187 @@ As demonstrated by Nowack et al.~(2020) and corroborated by our results, causal 
 
 Furthermore, the structural differences detected in our analysis suggest specific areas for targeted model improvement, particularly in the representation of Indian Ocean-Pacific Ocean teleconnections that appear underemphasized in the ACCESS ESM 1.5 model. Such diagnostic insights can guide focused development efforts to enhance the physical representation of key teleconnection mechanisms in climate models.
 
+\chapter{Cold Extremes}\label{ce}
+
+\emph{Author: Zhuoyang Li and Katrin Strößner}
+
+\emph{Supervisor: Henri Funk }
+
+\section{Abstract}\label{abstract-1}
+
+Extreme cold events have long been associated with severe societal impacts on energy systems, infrastructure, and public health. Therefore, it remains important to explore the potential for such events to occur in the future and develop appropriate measures in advance. In the context of global warming, even cold winters in Central Europe have been affected by rising temperatures. In this study, we investigated whether extremely cold winters---such as the coldest winter in Germany in 1963---could still occur under a warming climate.
+
+We first applied a dynamical adjustment approach combined with elastic net regression to confirm that atmospheric circulation was the main driver of temperature anomalies. This method also captured a decreasing tendency in the frequency and magnitude of cold extremes under global warming conditions. Furthermore, by examining the most extreme cold storylines from the supplementary boosted data provided by (\citet{sippel2024}), we found that extremely cold winters---such as the event observed in 1963---remain physically plausible despite a warming climate.
+
+\section{Introduction and Geographic Background}\label{introduction-and-geographic-background}
+
+Extreme cold events, or cold waves, are periods of unusually low temperatures that can severely impact society, leading to increased mortality, energy crises, and disruptions to infrastructure, transportation, and agriculture (\citet{pinto2024}). Europe has experienced several significant cold waves in recent history, including February 2012 in Eastern and Central Europe (\citet{planchon2015}), January 2017 in Southeastern Europe (\citet{anagnostopoulou2017}), March 2018 across Northern and Western Europe (\citet{karpechko2018}), and the winter of 2023, which was exacerbated by energy shortages linked to the Russian-Ukrainian war (\citet{quesada2023}). Despite long-term warming trends, cold waves remain a major concern due to their unpredictable nature and severe socio-economic consequences.
+
+Cold waves typically arise from persistent atmospheric circulation patterns that direct the cold Arctic or Eurasian air into Europe (\citet{quesada2023}). Key mechanisms include Scandinavian blocking, sudden stratospheric warming events, North Atlantic sea surface temperature anomalies, and snow-albedo feedbacks, which can amplify and prolong cold conditions. One of the most extreme examples is the winter of 1962/1963, the coldest on record in many Central European countries (\citep{eichler1970, sippel2024}). This winter was characterized by prolonged high-pressure blocking over Northwestern Europe, which diverted the usual westerly flow and allowed persistent easterly winds to bring frigid air into the continent (\citet{loikith2019}). Extensive snow cover reinforced the cold through high albedo effects, leading to the freezing of major European rivers and lakes, including the Rhine, Rhône, IJsselmeer, and large parts of the Baltic Sea (\citet{groisman1994}). The resulting extreme conditions had severe impacts on human health, infrastructure, and energy systems, highlighting the risks posed by such events even in a warming climate (\citet{eichler1970}).
+
+This study builds on the work of (\citet{sippel2024}), who investigated the question: ``Could an extremely cold central European winter such as 1963 happen again despite climate change?'' Their research addressed two key questions: (1) If a winter atmospheric circulation similar to 1963 were to re-occur in present-day climate, what would be the intensity in terms of cold temperatures? and (2) Is a winter as cold as 1963 or colder still possible in Central Europe today? The present study focuses in greater detail on the second question, assessing the potential for such an extremely cold winter in the current climate and its implications for future extreme events.
+
+\section{Data processing}\label{data-processing}
+
+In order to investigate potential worst-case cold winter conditions in Germany with a particular focus on Bavaria, we utilized the ERA5 reanalysis dataset (\citet{hersbach2020}) to analyze temperature anomalies during the winter months, specifically from December to February (DJF). To detect anomalies, we applied a 90-day moving average to remove the seasonal cycle, using 1981--2010 as the reference period. Seasonal temperature anomalies were calculated from daily anomalies.
+
+\section{Methods}\label{methods}
+
+\subsection{Dynamical Adjustment using Elastic Net Regression}\label{dynamical-adjustment-using-elastic-net-regression}
+
+Dynamical adjustment is a technique in climate science, that aims to estimate the influence of atmospheric circulation on a target surface climate variable, such as surface air temperature (\citep{wallace1995, smoliak2015, deser2016}). Here, we first apply dynamical adjustment to explore the influence of circulation patterns on temperature anomalies and to better understand the results obtained from other methods. Formally, the temperature anomaly at time \(t\), denoted \(T(t)\), is expressed as:
+
+\[
+T(t) = T_{\text{circ}}(t) + T_{\text{resid}}(t),
+\]
+where:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Circulation-induced component} (\(T_{\text{circ}}(t)\)) : Represents the part of the temperature anomaly that is driven by large-scale atmospheric circulation patterns.
+\item
+  \textbf{Residual component} (\(T_{\text{res}}(t)\)) : Captures thermodynamical effects, including externally forced warming and other unknown influences not explained by circulation patterns.
+\end{enumerate}
+
+Atmospheric circulation is typically difficult to measure directly, as it is not a single, easily defined quantity. Instead, it influences observable variables such as sea level pressure (SLP) and geopotential height, which are commonly used as proxies for large-scale circulation (\citep{smoliak2015, sippel2019}). These variables capture essential aspects of circulation patterns, including the strength and position of high- and low-pressure systems, the configuration of jet streams, and the occurrence of blocking events.
+To extract the circulation-induced component, we use sea level pressure (SLP) patterns as a proxy for atmospheric circulation. By applying statistical regression techniques, we estimate the part of temperature variability that these circulation patterns can explain. However, this method assumes a linear separation between circulation and thermodynamical effects. In reality, climate processes can be more complex, making this a limitation of the approach.
+
+In our study, we pursue two different approaches to dynamical adjustment. Both methods aim to estimate the circulation-induced component of daily mean winter temperature over our study region Bavaria,using a regularized linear regression technique, called ``elastic net regression'' (\citet{zou2005}). The first approach is based on the ERA5 reanalysis dataset, where an elastic net regression model is trained using sea level pressure (SLP) grid cells as predictors.
+
+We also use a second dynamical adjustment approach, in which the regression model is trained on the CESM2-LE, using the same predictors as in the ERA5-based model. We subtract the domain-average mean trend of geopotential height patterns to account for the long-term column expansion due to warming (\citet{sippel2024}), which allows for a greater focus on the interannual variability of atmospheric circulation and its impact on temperature. The resulting regression model, trained entirely on CESM2-LE, is independent of the observational data and is subsequently applied to the ERA5 dataset for comparison.
+
+\subsubsection{Elastic Net Regression}\label{elastic-net-regression}
+
+The model estimates the coefficient vector \(\boldsymbol{\beta}\) by minimizing the following penalized least squares objective function:
+
+\[
+\hat{\boldsymbol{\beta}} = \arg\min_{\boldsymbol{\beta}} \left\{ \| \mathbf{y} - \mathbf{X} \boldsymbol{\beta} \|_2^2 + \lambda \left[ \alpha \| \boldsymbol{\beta} \|_1 + (1 - \alpha) \| \boldsymbol{\beta} \|_2^2 \right] \right\}
+\]
+
+where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbf{y}\) denotes the vector of surface temperature anomalies,\\
+\item
+  \(\mathbf{X}\) represents the matrix of circulation-related predictors (e.g., gridded SLP values),\\
+\item
+  \(\lambda \geq 0\) is a tuning parameter controlling the overall penalty strength,\\
+\item
+  \(\alpha \in [0, 1]\) determines the balance between the L1 and L2 penalties.
+\end{itemize}
+
+This formulation combines two regularization methods: Lasso (L1) and Ridge (L2) regression. The L1 penalty results in sparsity by shrinking specific coefficients to zero exactly, which can be interpreted as making variable selection by including only the most important predictors in the model. The L2 penalty shrinks the coefficients more evenly and stabilizes the model if predictors are highly correlated. By adjusting the mixing parameter \(\alpha\), Elastic net blends the advantages of both methods, enabling variable selection while maintaining model stability and predictive accuracy in multicollinearity. These properties make elastic nets particularly suitable for modeling temperature responses to spatially structured and interdependent circulation fields.
+
+\subsection{Ensemble Boosting}\label{ensemble-boosting}
+
+Cold extremes pose significant challenges in climate science due to their substantial socio-economic impacts. Traditional climate models struggle to capture the rare and intense nature of these events, necessitating advanced methodologies such as ensemble boosting. Hence, (\citet{sippel2024}) explored the principles of ensemble boosting and its application to evaluate whether a worst-case cold winter such as 1963 is still possible. They focused on a 30-member CESM2 initial condition large ensemble (CESM2-ETH) from 2005 to 2035 to generate physically plausible worst-case scenarios of extremely cold winters.
+
+Ensemble boosting is a technique designed to enhance the representation of extreme weather and climate events in model simulations. The core concept involves perturbing an initial state within a climate model, allowing different yet physically consistent realizations of an extreme event. By systematically re-initializing the model with minuscule perturbations, it becomes possible to explore the tail behavior of the event distribution.
+In the context of climate modeling, boosting follows a two-step approach:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{First-order boosting} -- Re-initialization occurs approximately 5-20 days before an identified extreme event using a round-off perturbation. This yields multiple ensemble members, each evolving uniquely but within the constraints of atmospheric dynamics.
+\item
+  \textbf{Second-order boosting} -- After identifying the coldest simulations from the first-order boosted ensemble, additional perturbations are applied to these extreme cases, further refining the representation of worst-case scenarios.
+\end{enumerate}
+
+This approach enables a more comprehensive understanding of potential extreme cold events by expanding the dataset of plausible realizations beyond those found in standard climate model ensembles, such as single model initial-condition large ensemble (SMILEs).
+
+\subsubsection{Data and Methodology of Ensemble Boosting}\label{data-and-methodology-of-ensemble-boosting}
+
+In the study of (\citet{sippel2024}), the CESM2-ETH large ensemble, spanning 900 winter seasons (December-January-February, DJF) from 2005 to 2035, serves as the foundational dataset. This dataset follows the CMIP6 historical forcing (2005-2014) and the SSP3-7.0 scenario (2015-2035). Each of the 30 ensemble members originates from a transient historical simulation with a round-off perturbation in atmospheric initial conditions. To analyze extreme cold events, a boosting methodology was applied:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{First-order boosting}: The coldest December during the 2020s in the CESM2-ETH ensemble was identified. This simulation was then perturbed and re-initialized for each day from December 1-15, generating 50 ensemble members per day. This resulted in a total of 750 simulations, capturing a well-constrained representation of early winter cold conditions.
+\item
+  \textbf{Second-order boosting}: To further explore extreme cold persistence into January, the two coldest simulations from the first-order boosted set were selected. These were subsequently re-initialized daily from January 1-15, with 50 ensemble members per day, leading to 1500 additional simulations.
+\end{itemize}
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/03-coldex/figures/boosting original} 
+
+}
+
+\caption{This figure (a) provides an illustrative example of model boosting, adapted from \citet{sippel2024}}\label{fig:boosting-example}
+\end{figure}
+
+The perturbation methodology maintained physical consistency by applying small modifications to the specific humidity field (q) at each grid point, with a magnitude of \(10^{-13}\). These perturbations ensured mass, energy, and momentum conservation up to the precision of a round-off error. The coupled model was then run for 60 days, with ensemble spread remaining small for the first 4-5 days before diverging significantly.
+
+Instead of replicating the exact methods used by (\citet{sippel2024}), this study focuses on leveraging the provided supplementary boosted data by (\citet{sippel2024}) to examine the most extreme cold storylines. Specifically, the study analyzed:
+(i) The three coldest storylines (minimum temperature and average temperature) from the BSSP370cmip6.0480013.zip dataset.
+(ii) The three coldest storylines (minimum temperature and average temperature) from the BSSP370cmip6.0230013.zip dataset.
+
+These datasets consist of (i) first-order boosting simulations originating from ensemble member 13 of CESM2-ETH, initialized on December 6, 2022, and December 15, 2022, as well as second-order boosting simulations branching off from specific first-order boosted members ensemble member 23 on December 6, 2022, and ensemble member 48 on December 15, 2022). By analyzing these datasets, this study aims to answer the research question whether winters such as 1963 are still possible in today's climate.
+
+\section{Results and Discussion}\label{results-and-discussion}
+
+Here, the key findings derived from the applied methods are presented, followed by a reflection on their scientific implications and a discussion of the methodological limitations and uncertainties involved in the analysis.
+
+\subsection{Dynamical Adjustment}\label{dynamical-adjustment}
+
+The circulation-induced component of temperature variability is clearly separated from the residual component, which is not explained by circulation and likely reflects thermodynamical effects (Fig.\ref{fig:dynamical-trend}). The residual time series shows a consistent upward trend (Fig.\ref{fig:dynamical-trend} bottom), indicating that thermodynamical warming plays a significant role in addition to circulation changes. Besides, the circulation-induced variability shows a strong Pearson correlation of R = 0.8 with the observed, detrended DJF temperature anomalies over Bavaria (Fig.\ref{fig:dynamical-trend} top), thus supporting the conclusion that circulation is the main driver of inter-annual winter temperature variability as suggested by the reference study. (\citet{sippel2024})
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{work/03-coldex/figures//dynamical adjustment} 
+
+}
+
+\caption{Winter temperature anomaly time series over Bavaria and long-term trends, dashed lines show linear trends in the original time series (black) and the circulation-induced and residual component (blue).}\label{fig:dynamical-trend}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Top:} 1951--2024 winter (DJF) temperature anomalies and the contribution of atmospheric circulation (blue line)
+\item
+  \textbf{Bottom:} residual temperature anomaly time series when atmospheric circulation contributions are removed and the trend of this ``circulation conditional'' residual.
+\end{itemize}
+
+The dark blue line (adjusted using ERA5) shows a clear upward trend, suggesting a decrease in the frequency of cold spells (Fig.\ref{fig:dynamical-trend} top). This indicates that, in addition to thermodynamical effects, changes in atmospheric circulation have also contributed to winter warming over Bavaria. However, the CESM2-based light blue line remains relatively flat, showing little to no evidence of strong externally forced changes and suggesting that the future of regional circulation changes under external forcing remains highly uncertain.
+
+This raises a critical uncertainty, as discussed in (\citet{sippel2024}): whether the circulation trend observed in recent decades represents an externally forced signal or just natural variability. If the trend is indeed forced but not captured by the models, extreme cold winters like 1963 may become less likely in the future. Conversely, if the observed trend is primarily due to natural variability, it could reverse, and similar cold extremes may occur again. This uncertainty remains a key challenge in climate modeling, and understanding it better is crucial for improving future predictions.
+
+\subsection{Ensemble Boosting}\label{ensemble-boosting-1}
+
+The three coldest storylines, in terms of both minimum temperature and average temperature, were analyzed for ensemble members 23 and 48 from the first-order boosted simulations.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{work/03-coldex/figures/boosting results23} 
+
+}
+
+\caption{The three coldest storylines (based on minimum and average temperature) are derived from ensemble member 23. The data are extracted from the file BSSP370cmip6.0230013.zip, provided by \citet{sippel2024}}\label{fig:boosting-result23}
+\end{figure}
+
+For ensemble member 23, the lowest recorded temperatures in the second-order boosted simulations reached a minimum temperature of -26.3°C, while the average temperature over the winter period from January to March was -12.1°C. Figure \ref{fig:boosting-result23} illustrates the three coldest minimum temperature storylines in the left panel and the three coldest average temperature storylines in the right panel. The ensemble members associated with these extreme conditions-ens010, ens040, and ens042 for minimum temperature, and ens037, ens039, and ens047 for average temperature---exhibit pronounced cold events, highlighting the capacity of the boosting technique to explore the statistical tail of extreme winter conditions.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{work/03-coldex/figures/boosting results48} 
+
+}
+
+\caption{The three coldest storylines (based on minimum and average temperature) are derived from ensemble member 48. The data are extracted from the file BSSP370cmip6.0480013.zip, provided by \citet{sippel2024}}\label{fig:boosting-result48}
+\end{figure}
+
+For ensemble member 48, the coldest recorded temperatures in the second-order boosted simulations included a minimum temperature of -25.9°C, which consistently occurred at the start of the initialization, and an average temperature of -10.2°C over the winter period from January to March (Fig.\ref{fig:boosting-result48}). The fact that the lowest minimum temperatures always appeared at the beginning of the initialization phase suggests potential influences of edge conditions, temporal dependencies, or initialization bias. To address these factors, early January was excluded from the analysis. When focusing on mid-to-late winter, the lowest minimum temperature was observed in simulation ens037, reaching -23.1°C.
+
+The ensemble boosting results demonstrate that extremely cold temperatures, such as in the winter of 1962/1963 or colder, can still be reached today under an SSP3-7.0 scenario. This contrasts with the findings by (\citet{quesada2023}), who observed a general decline in the frequency and severity of cold events across Europe. However, the presented results align with other studies suggesting that under certain conditions---such as a weakening Atlantic Meridional Overturning Circulation (AMOC)---cold extreme intensities may increase in the future (\citet{meccia2023}). This apparent contradiction illustrates the complex and multifaceted nature of cold event dynamics. It also reflects the low seasonal predictability identified in recent research, which attributes this uncertainty to chaotic atmospheric forcings, such as variability in westerly winds (\citet{kautz2021}). The finding that extreme cold events remain possible is further supported by (\citet{brunner2018}), who showed that approximately 70\% of central European cold extremes coincide with atmospheric blocking between 60°W and 30°E---highlighting the continued relevance of large-scale weather patterns as a dominant driver.
+
+Last, there are important limitations to consider. The distribution and frequency of ``boosted'' cold events are sensitive to the specific events selected for enhancement, which may influence the representativeness of the results. Additionally, re-initializing the model with different atmospheric conditions could potentially generate even colder outcomes, indicating that the full range of extreme winter possibilities might not be fully captured.
+
 \chapter{Introduction}\label{introduction-2}
 
 \emph{Author: }
@@ -445,7 +680,228 @@ Furthermore, the structural differences detected in our analysis suggest specifi
 
 \section{Outline of the Booklet}\label{outline-of-the-booklet-3}
 
-\chapter{Introduction}\label{introduction-4}
+\chapter{Co-occurence of extremes}\label{co-occurence-of-extremes}
+
+\emph{Author: Chongjun }
+
+\emph{Supervisor: Henri Funk}
+
+\section{Abstract}\label{abstract-2}
+
+This report investigates the spatial dependence of extreme co-occurrence globally by employing hypothesis testing. The analysis aims to assess whether extreme events, such as temperature and precipitation extremes, exhibit spatial dependencies across the Earth's land surface. Using observational data from the Climatic Research Unit (CRU), the Berkeley Earth (BE) dataset, and the Global Precipitation Climatology Centre (GPCC), we explore both positive and negative spatial dependencies between extreme temperature and precipitation events. The study quantifies the intensity of spatial dependence by introducing the Probability Multiplication Factor (PMF), which provides a numerical representation of the strength of the spatial correlation between extreme events. Furthermore, we examine how spatial dependence varies with distance and latitude, offering insights into the geographic and climatological factors that influence the co-occurrence of extreme events. The findings demonstrate significant patterns of both positive and negative spatial dependencies, highlighting the complex relationships between extreme weather events and their spatial distribution across different regions.
+
+\section{Introduction}\label{introduction-4}
+
+Climate extremes, such as heatwaves, heavy precipitation events, droughts, and tropical cyclones, pose severe threats to both natural and human systems. Their intensification in recent decades has led to escalating economic losses, ecosystem disruptions, and public health crises. These extremes are not random or isolated occurrences but exhibit distinct statistical dependencies. While extreme events can cluster over time (temporal dependence), they are also spatially dependent, meaning that extreme conditions in one region are often correlated with those in neighboring or even distant areas due to large-scale climate dynamics. Understanding this spatial dependence is crucial for improving risk assessments, predicting multi-region impacts, and formulating climate adaptation strategies.
+
+Although temporal dependence plays a role in the persistence of climate extremes, this report focuses exclusively on their spatial dependence---the extent to which extreme climate conditions co-occur across different locations. Spatial dependence arises due to shared meteorological drivers, such as atmospheric circulation patterns, teleconnections, and geographic influences. For instance, heatwaves are often linked across multiple regions by high-pressure blocking systems, while extreme precipitation events can span large areas due to stalled weather fronts. Recognizing and quantifying these spatial relationships is critical for accurately modeling extreme event risks and preparing for simultaneous disasters that affect multiple regions.
+
+One striking example of spatial dependence in climate extremes is the 2010 Eastern Russian heatwave, which was not confined to Eastern Russia alone but also influenced temperatures across Eastern Europe and Central Asia. The event was driven by a persistent atmospheric blocking pattern, which sustained extreme temperatures over an extensive spatial scale.
+
+\vspace{1em}
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{work/06-anthropo/figures/russialsta_heatwave_2010208} 
+
+}
+
+\caption{Source: [https://earthobservatory.nasa.gov/images/45069/heatwave-in-russia]. Heat waves in Eastern Russia, Eastern Europe and Central Asia in 2010.}\label{fig:unnamed-chunk-3}
+\end{figure}
+\vspace{1em}
+
+Another example is tropical cyclones in the Atlantic, where clusters of hurricanes can develop due to favorable oceanic and atmospheric conditions, causing sequential or simultaneous destruction across multiple coastal regions. Similarly, compound flooding events, where storm surges coincide with extreme rainfall across interconnected watersheds, demonstrate the importance of spatially correlated extremes in shaping disaster impacts.
+
+\vspace{1em}
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{work/06-anthropo/figures/atlantic} 
+
+}
+
+\caption{Source: [https://phys.org/news/2019-03-big-storm-clusters-hurricane-hotspots.html]. Hurricanes occur simultaneous in the Atlantic in 2019.}\label{fig:unnamed-chunk-4}
+\end{figure}
+\vspace{1em}
+
+The study of spatial dependence in climate extremes has gained increasing attention as traditional models often assume independent occurrences, leading to the underestimation of multi-region risks. Modern statistical approaches, such as extreme value theory (EVT), copula models, and geostatistical methods, provide powerful tools for quantifying spatial dependence and improving predictions of concurrent extreme events. Additionally, the role of climate teleconnections, such as the El Niño-Southern Oscillation (ENSO) and the North Atlantic Oscillation (NAO), further highlights how distant regions can experience correlated extremes.
+
+Despite advancements in understanding spatial dependencies, significant challenges remain. Non-stationarity in climate extremes---driven by global warming, land-use changes, and shifting atmospheric patterns---complicates the identification of stable spatial dependence structures. Furthermore, as climate extremes become more frequent and intense, their spatial footprints may expand, necessitating continuous refinement of statistical models. Addressing these challenges is crucial for enhancing resilience against climate risks and improving predictive capabilities in disaster-prone regions.
+
+This report will discuss methodologies for quantifying the spatial dependence of climate extremes and examine key characteristics of this dependence on a global scale. By deepening our understanding of how extreme climate events co-occur across space, we can better identify large-scale patterns, improve predictive models, and refine risk assessments to support climate adaptation strategies.
+
+\section{Tail Dependence}\label{tail-dependence}
+
+Tail dependence refers to the relationship between the extreme values of two or more variables, specifically whether extreme values of one variable tend to coincide with extreme values of another variable. Unlike traditional correlation \(r(G_i, G_j)\), which measures the linear relationship between variables, tail dependence focuses on the co-occurrence of extreme events, such as the occurrence of severe climate conditions in different regions simultaneously. The objective of this research is not to analyze correlation between regions but to explore how extreme values in one region might depend on extreme values in another region, even if there is no linear correlation.
+
+Statistically, tail dependence is a measure used to quantify the likelihood of simultaneous extreme values in the tails of distributions. There are various methods to measure tail dependence, with the most commonly used being the upper and lower tail dependence coefficients. These coefficients describe the probability of one variable exceeding a threshold given that the other variable has already exceeded a similar threshold, capturing the essence of tail events and their joint occurrences. Tail dependence is crucial in risk management, particularly in fields such as finance and climate science, where extreme events (e.g., market crashes or heatwaves) can have substantial consequences.
+
+\vspace{1em}
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{work/06-anthropo/figures/tail} 
+
+}
+
+\caption{Source: [https://freakonometrics.hypotheses.org/2435]. Tail dependence of 2 variables.}\label{fig:unnamed-chunk-5}
+\end{figure}
+\vspace{1em}
+
+It is important to note that while correlation can provide insights into the likelihood of tail dependence, a high correlation between two grid cells (\(G_i\) and \(G_j\)) suggests a higher probability of their extreme values occurring together. However, a high correlation does not necessarily imply that extreme values will co-occur, nor does the absence of correlation rule out the possibility of tail dependence. In other words, tail dependence can manifest even when two variables are not correlated, and vice versa.
+
+\section{Hypothesis Test}\label{hypothesis-test}
+
+We conducted a hypothesis test to assess the spatial dependence of climate extremes. The null hypothesis, \(H_0\), is that climate extremes occur independently at two grid cells, \(G_i\) and \(G_j\), where \(i \neq j\), at a significance level of \(\alpha = 0.05\). We aim to identify spatial dependence by rejecting \(H_0\). The identification of extremes in a grid cell is defined by whether the value exceeds the 95th percentile or falls below the 5th percentile of the distribution. Therefore, the probability that a single grid cell, \(G_i\), is extreme is \(P(G_i \text{ is extreme}) = 0.1\) (10\%).
+
+Next, we consider the joint probability of two grid cells, \(G_i\) and \(G_j\), being extreme. Specifically, the probability that both \(G_i\) and \(G_j\) are extreme is calculated based on two cases: both cells exceeding the 95th percentile, or both cells falling below the 5th percentile. This defines positive concurrence of extremes. For negative concurrence, we consider the case where \(G_i\) is greater than the 95th percentile and \(G_j\) is less than the 5th percentile, or vice versa. In mathematical terms:
+
+\begin{itemize}
+\item
+  Positive concurrence:
+  \[
+  P(G_i > 0.95 \text{ and } G_j > 0.95) \text{ or } P(G_i < 0.05 \text{ and } G_j < 0.05)
+  \]
+\item
+  Negative concurrence:
+  \[
+  P(G_i > 0.95 \text{ and } G_j < 0.05) \text{ or } P(G_i < 0.05 \text{ and } G_j > 0.95)
+  \]
+\end{itemize}
+
+Under the assumption of no spatial dependence, the probability of either positive or negative concurrence, \(p_0\), is computed as:
+
+\[
+p_0 = 2 \times 0.0025 = 0.005
+\]
+
+This is the probability of concurrent extremes occurring at both grid cells, regardless of whether the concurrence is positive or negative, under the null hypothesis of no spatial dependence.
+
+Next, we consider a time frame of 120 years, or 1440 months. The expected number of months during which both grid cells experience concurrent extremes is \(E(X) = n \times p_0 = 1440 \times 0.005 = 7.2\) months. To test for spatial dependence, we model the number of concurrent extreme months using a binomial distribution:
+
+\[
+X \sim \text{Binomial}(n = 1440, p = 0.005)
+\]
+\vspace{1em}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load ggplot2 package}
+
+
+\CommentTok{\# Set parameters}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{1440}  \CommentTok{\# Total number of months}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FloatTok{0.005}  \CommentTok{\# Probability of extreme temperature events occurring each month}
+\NormalTok{m\_values }\OtherTok{\textless{}{-}} \DecValTok{0}\SpecialCharTok{:}\NormalTok{n  }
+
+\CommentTok{\# Calculate the cumulative probability density (CDF) of the binomial distribution}
+\NormalTok{cumulative\_probability }\OtherTok{\textless{}{-}} \FunctionTok{pbinom}\NormalTok{(m\_values, }\AttributeTok{size =}\NormalTok{ n, }\AttributeTok{prob =}\NormalTok{ p)}
+
+\CommentTok{\# Convert the results into a data frame}
+\NormalTok{df\_cdf }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{m =}\NormalTok{ m\_values, }\AttributeTok{CDF =}\NormalTok{ cumulative\_probability)}
+
+\CommentTok{\# Plot the CDF of the binomial distribution with limited x{-}axis range}
+\FunctionTok{ggplot}\NormalTok{(df\_cdf, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ m, }\AttributeTok{y =}\NormalTok{ CDF)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \DecValTok{13}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Binomial Distribution CDF (n = 1440, p = 0.005)"}\NormalTok{,  }
+       \AttributeTok{x =} \StringTok{"Number of Concurrences (month)"}\NormalTok{,  }
+       \AttributeTok{y =} \StringTok{"Cumulative Probability"}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{xlim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{20}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \DecValTok{13}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.02}\NormalTok{, }\AttributeTok{label =} \StringTok{"Reject H0"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{1.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{8}\NormalTok{),  }
+        \AttributeTok{axis.title.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{6}\NormalTok{),   }
+        \AttributeTok{axis.title.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{6}\NormalTok{))  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{book_files/figure-latex/unnamed-chunk-6-1} \end{center}
+\vspace{1em}
+
+Using the binomial distribution's cumulative probability, we reject \(H_0\) if the number of months with concurrent extremes, \(x\), is greater than or equal to 13. That is, we reject \(H_0\) at the 0.05 significance level when \(x \geq 13\). This corresponds to the condition where:
+
+\[
+P(X \geq 13) \leq 0.05
+\]
+
+Thus, if the number of months with concurrent extremes exceeds 13 in the 120-year period, we conclude that there is spatial dependence between the two grid cells. The corresponding probability threshold for rejecting \(H_0\) is when \(p_0 \geq 0.009\).
+
+\section{Probability Multiple Factor}\label{probability-multiple-factor}
+
+In order to assess the strength of spatial dependence, the study introduces the Probability Multiplication Factor (PMF), which quantifies the degree of extreme concurrence between two grid cells. The PMF is defined as the ratio of the actual probability of extreme concurrence to the baseline probability of extreme concurrence under the null hypothesis, denoted as \(p_0\). Mathematically, this can be expressed as:
+
+\[
+\text{PMF} = \frac{P(\text{extreme concurrence})}{p_0}
+\]
+
+The threshold for the PMF is calculated by dividing \(p_0 = 0.005\) by the baseline probability of extreme concurrence \(p_0 = 0.005\), yielding a threshold value of:
+
+\[
+\frac{0.009}{0.005} = 1.8
+\]
+
+When the PMF exceeds or equals this threshold, i.e., when:
+
+\[
+\text{PMF} \geq 1.8
+\]
+
+it indicates the presence of spatially dependent extremes. Furthermore, the larger the PMF, the stronger the spatial dependence between the extreme events in the two grid cells.
+
+\section{Results}\label{results-1}
+
+The study utilizes temperature and precipitation products from the Climatic Research Unit (CRU), the temperature product from Berkeley Earth (BE), and the precipitation product from the Global Precipitation Climatology Centre (GPCC). These datasets provide time series data spanning a 120-year period (1901--2020), enabling a comprehensive analysis of extreme event co-occurrence and spatial dependence.
+
+The study divides the globe into 2° × 2° grid cells, selecting only those with a land area greater than 30\% for analysis. Consequently, the research primarily focuses on spatial dependence over land, excluding oceanic regions.
+
+Analysis of temperature and precipitation extremes reveals distinct patterns of spatial dependence. Temperature extremes predominantly exhibit positive spatial co-occurrence, with a mean Probability Multiplication Factor (PMF) of 3.25 across 58\% of grid cell pairs. In contrast, negative dependence is detected in only 15\% of grid cell pairs. Precipitation extremes display both positive and negative spatial dependencies, observed in 27\% and 25\% of grid cell pairs, respectively, with mean PMF values of 2.64 and 2.40.
+
+The strength of positive concurrence is particularly pronounced in geographically proximate regions and diminishes with increasing distance. Specifically, for both temperature (Figure 4. A) and precipitation (Figure 4. B) extremes, PMF remains consistently higher when the distance between grid cells is less than 5000 km. Beyond this threshold, PMF exhibits only a marginal decline as distance increases, suggesting a limited attenuation of spatial dependence at larger scales. However, in cases of extreme distances, a PMF exceeding 1.8 alone is not sufficient to confirm spatial dependence, as atmospheric circulation patterns, including heat advection and precipitation transport, can facilitate the transfer of extreme conditions between distant grid cells within a monthly timeframe. Nevertheless, the fact that PMF does not significantly decrease beyond 5000 km indicates that distance is not the primary determinant of spatial dependence. This implies the presence of additional underlying factors contributing to the strong spatial correlation observed between geographically distant regions.
+
+The negative concurrence strength of temperature extremes (Figure 4. C) is also pronounced in neighboring regions. In contrast, no distinct spatial pattern is observed for the negative concurrence of precipitation extremes (Figure 4. D).
+
+\vspace{1em}
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{work/06-anthropo/figures/distance} 
+
+}
+
+\caption{Source: [https://www.science.org/doi/10.1126/sciadv.abo1638]. The distribution of PMF values across different grid cell pairs at varying distances. Each scatter point on the plot represents the PMF of a grid cell pair, while the color indicates the density of point distribution. Blue signifies the highest density, indicating more concentrated pairs, whereas red represents the lowest density, corresponding to more dispersed pairs. The data used is observed data.}\label{fig:unnamed-chunk-7}
+\end{figure}
+\vspace{1em}
+
+The study further identified that extreme events tend to co-occur more strongly in the tropics and high-latitude regions of both hemispheres. In the analysis, solid lines represent the probability mass function (PMF) of regions with positive concurrence, while dashed lines indicate regions with negative concurrence. For both temperature and precipitation extremes, the mean PMF for negative concurrence remains consistently lower than that for positive concurrence, suggesting that positively dependent extremes are more prominent.
+
+The impact of long-term warming trends can be evaluated by comparing the red and blue lines in the figures. In the tropics, the strong positive dependence of temperature extremes (Figure 5.E) is largely due to warming trends, as indicated by PMF values reaching up to 6 when the trend is included. However, after removing the trend, the PMF drops to 4.5, emphasizing the substantial influence of warming on the observed concurrence of temperature extremes. In contrast, negative dependence in temperature extremes is more commonly found in the northern high-latitude regions. The historical simulations from CMIP6 models show a closer match with observed data when trends are included, whereas the historical natural (hist nat) simulations better align with observations when trends are removed.
+
+For precipitation extremes (Figure 5.F), the spatial pattern of dependence is similar to that of temperature extremes. However, in this case, long-term warming trends have only a minor effect on PMF, suggesting that other factors play a more significant role in shaping the spatial dependence of precipitation extremes. Another key difference from temperature extremes is that the results from historical simulations and historical natural (hist nat) simulations are nearly identical. This suggests that the warming trend does not substantially alter the spatial dependence of precipitation extremes, unlike its effect on temperature extremes.
+
+\vspace{1em}
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{work/06-anthropo/figures/latitude} 
+
+}
+
+\caption{Source: [https://www.science.org/doi/10.1126/sciadv.abo1638]. The distribution of PMF values across different grid cell pairs at varying latitudes. Solid lines represent the PMF of positively concurrent regions, dashed lines indicate negatively concurrent regions. Four scenarios: observation with/without trend, historical simulated data and hist-nat simulated data (natural forcing only).}\label{fig:unnamed-chunk-8}
+\end{figure}
+\vspace{1em}
+
+\section{Sensitivity Test}\label{sensitivity-test}
+
+This study also investigated how spatial dependence responds to different thresholds used to define extreme events. The hypothesis test was conducted with a threshold of 0.05/0.95, while the sensitivity analysis explored a range from 0.01/0.99 to 0.1/0.9. The 0.01/0.99 threshold represents the strictest criterion, meaning only the most extreme events are considered, while the 0.1/0.9 threshold is the least strict, allowing more events to be included. The findings suggest that as the threshold becomes stricter, fewer grid cell pairs exhibit extreme concurrence, leading to a smaller number of identified regions. At the same time, the mean probability mass function (PMF) increases, indicating that spatial dependence is stronger under stricter threshold conditions.
+
+\vspace{1em}
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{work/06-anthropo/figures/sensitivity} 
+
+}
+
+\caption{Source: [https://www.science.org/doi/10.1126/sciadv.abo1638]. The proportion of land grid cell pairs where climate extremes exhibit significant positive (solid lines) or negative (dashed lines) dependence, assessed using probability thresholds ranging from 0.9/0.1 to 0.99/0.01, based on observational data from 1901 to 2020. (C,D) Corresponding results for (A,B), but depicting the mean probability multiplication factor (PMF) for positively (solid lines) and negatively (dashed lines) dependent climate extremes.}\label{fig:unnamed-chunk-9}
+\end{figure}
+\vspace{1em}
+
+\chapter{Introduction}\label{introduction-5}
 
 \emph{Author: }
 
@@ -454,26 +910,6 @@ Furthermore, the structural differences detected in our analysis suggest specifi
 \section{Intro About the Seminar Topic}\label{intro-about-the-seminar-topic-4}
 
 \section{Outline of the Booklet}\label{outline-of-the-booklet-4}
-
-\chapter{Introduction}\label{introduction-5}
-
-\emph{Author: }
-
-\emph{Supervisor: }
-
-\section{Intro About the Seminar Topic}\label{intro-about-the-seminar-topic-5}
-
-\section{Outline of the Booklet}\label{outline-of-the-booklet-5}
-
-\chapter{Introduction}\label{introduction-6}
-
-\emph{Author: }
-
-\emph{Supervisor: }
-
-\section{Intro About the Seminar Topic}\label{intro-about-the-seminar-topic-6}
-
-\section{Outline of the Booklet}\label{outline-of-the-booklet-6}
 
 \chapter{Acknowledgements}\label{acknowledgements}
 
