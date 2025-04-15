@@ -37,46 +37,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -193,7 +153,7 @@
 
 \title{Climate And Statistics}
 \author{Henri Funk, Alexander Sasse, Helmut Küchenhoff, Ralf Ludwig}
-\date{2025-04-14}
+\date{2025-04-15}
 
 \begin{document}
 \maketitle
@@ -258,15 +218,1008 @@ For details, head over to the \href{https://github.com/henrifnk/Seminar_ClimateN
 
 \section{Outline of the Booklet}\label{outline-of-the-booklet}
 
-\chapter{Introduction}\label{introduction-1}
+\chapter{DL Classification of Weather Patterns over Europe}\label{sm}
 
-\emph{Author: }
+\emph{Author: Ziyu Mu, Laura Schlueter}
 
-\emph{Supervisor: }
+\emph{Supervisor: Henri Funk}
 
-\section{Intro About the Seminar Topic}\label{intro-about-the-seminar-topic-1}
+\emph{Degree: Master}
 
-\section{Outline of the Booklet}\label{outline-of-the-booklet-1}
+\section{Abstract}\label{abstract}
+
+Daily weather in the mid-latitudes is dominated by large-scale atmospheric circulation types (CTs), which influence regional climate variability and extremes.
+Accurate classification of these CTs is crucial for diagnosing long-term climate dynamics and analysing future changes. This study implements and extends a novel deep learning-based classification method for European CTs, building on the Hess \& Brezowsky (HB) framework.
+
+Using a convolutional neural network (CNN) architecture (inspired by applications in climate science and optimization techniques from), we trained the model on high-resolution ERA5 reanalysis data (1950--1980), with sea-level pressure (SLP) and geopotential height at 500 hPa (z500) fields as key predictors. To ensure robustness, a nested cross-validation approach was employed, achieving an overall accuracy of 53.17\% and a macro F1 score of 55.14\%, outperforming traditional classification methods.
+
+Applied to the CanESM2 ensemble projections, which simulate data with assumptions that climate conditions were consistent with history, our results show significant future frequency shifts in CTs, notably an increase in Icelandic High, Cyclonic (HNZ) occurrences during both summer and winter half-years. This methodological advancement not only enhances classification accuracy but also offers robust ensemble analyses critical for climate-informed decision-making.
+
+\section{Introduction}\label{introduction-1}
+
+In the mid latitudes, daily weather is dominated by large-scale atmospheric circulation patterns,
+defined by the position of high and low pressure centres \citep{Hackel2021, Mittermeier2022}.
+Due to steep temperature and pressure gradients along the frontal zone between polar and tropical air masses (around 45° latitude),
+the jet stream is formed in about 10 km altitude.
+It is characterized by mean wind speeds of 300 km/h and the long-term average wind direction is westerly \citep{Hackel2021}.
+Here, dynamic high and low pressure systems develop \citep{Hackel2021, Mittermeier2022}.
+However, the westerly jet stream is not stationary, but deflected with varying amplitude creating the so-called Rossby waves,
+which influence the position of high and low pressure systems \citep{Hackel2021}.
+While an infinite number of atmospheric conditions would be conceivable, recurrent weather patterns with similar meteorological features are observed in practice.
+Therefore, it is possible to classify weather patterns according to synoptic properties \citep{Bissolli2001b}.
+
+The first concept for a classification of different weather patterns was introduced by \citet{Baur1944}.
+They used surface pressure charts from 1881 to 1939 and assigned the respective weather situation to a specific class for each day based on the spatial distribution of atmospheric pressure and the position of the frontal zones.
+This lead to a classification into 21 Grosswetterlagen for Europe and East Atlantic \citep{Baur1944}.
+In 1963 Baur defined Grosswetterlage as the mean spatial air pressure distribution of a large area, at least the size of Europe, over a period of several successive days.
+This classification has been revised and improved several times. In 1977, Hess and Brezowsky published their third edition of a revised catalogue of Grosswetterlagen.
+Here, the authors determined that a Grosswetterlage should only be classified if it can be recognised on at least three successive days.
+Furthermore, the number was extended to 29 different Grosswetterlagen.
+In addition to the surface pressure chart, the classification was also based on the geopotential height in 500hPa \citep{Bissolli2001, Bissolli2001b, Werner2010}.
+In the following, Werner and Gerstengarbe published seven editions of a catalogue of the Grosswetterlagen in Europe with updated data.
+The last edition (2010) covers the years 1881 to 2009 and provides daily information on the Grosswetterlage over Europe.
+Today, the German Weather Service (DWD) still constantly updates the catalogue of European Grosswetterlagen and publishes the results monthly.
+Since 1944, the classification of Grosswetterlagen is conducted by experts, hence it is subjectively biased \citep{Hess2005katalog}.
+In the following, the classification according to Hess \& Brezwosky will be referred to as HB CT.
+
+HB CTs can be attributed to certain weather situation at certain locations in Europe \citep{Werner2010}.
+Hence in the past, the classification of HB CTs has been used to identify regularities in frequency and duration of occurrences of certain weather conditions.
+\citet{Bissolli2001} describes a relationship between frequency and duration of the HB CTs and mean annual air temperature and precipitation.
+Moreover, extreme weather events---such as heavy rainfall, floods, and heat waves---can often be linked to specific HB CTs \citep{Mittermeier2022}.
+Such kinds of application could not only be useful to analyse past climate.
+Future climate projections could also be analysed using the HB CTs, allowing conclusions to be drawn about future developments.
+However, analyzing future CTs requires many model ensembles to account for internal variability \citep{Wyser2021}.
+Manual classification of HB CTs for many ensemble members is no longer possible.
+It is therefore necessary to consider the possibility of automatization \citep{Mittermeier2022}.
+\citet{Mittermeier2022} have found a way to classify HB CTs automatically using a deep learning classifier.
+
+\section{Data}\label{data}
+
+\subsection{Data Sources}\label{data-sources}
+
+This section describes in detail the datasets utilized for model training, validation, and testing,
+providing comprehensive explanations of their characteristics, purposes, and roles within the study.
+Due to data availability constraints, we replaced the original study's ERA-20C \citep{Poli2016} and SMHI-LENS \citep{Wyser2021} data with
+ERA5 \citep{ECMWF_ERA5} (higher resolution, 1950--1980) for training and CanESM2 \citep{Hua2015, CanESM2} (use only 12 of 50 ensemble members) for projections.
+
+\subsubsection{Historical Data - Training and Validation}\label{historical-data---training-and-validation}
+
+We use reanalysis dataset, which is the historical atmospheric data reconstructed by combining observational data and model simulations, for training and validation.
+Data is provided by European Centre for Medium-Range Weather Forecasts (ECMWF).
+
+We only use two variables mentioned above:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  SLP: Atmospheric pressure measured at Earth's surface, vital for identifying weather systems such as cyclones and anticyclones.
+\item
+  z500: Height of the 500 hPa pressure level in the atmosphere, indicative of atmospheric wave patterns and mid-tropospheric dynamics.
+\end{enumerate}
+
+Due to reanalysis data's high-quality, accurate, and detailed historical atmospheric representation, it is enabled to get a robust and precise training of the deep learning model.
+
+The difference of ERA5 (Figure \ref{fig:ERA5}) and ERA-20C (Appendix Figure \ref{fig:ERA20C}) lies on:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3684}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3816}}@{}}
+\caption{Difference between two reanalysis dataset}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Reanalysis Dataset
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Temporal Coverage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Spatial Resolution
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Reanalysis Dataset
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Temporal Coverage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Spatial Resolution
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ERA-20C (paper) & 1900--1980 & Approximately 125 km \\
+ERA5 (implementation) & 1950--1980 & High-resolution, about 31 km \\
+\end{longtable}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/circulation_types_regrid} 
+
+}
+
+\caption{Synoptic patterns of the 29 HB CTs created using ERA5 data averaged over the period 1950 - 1980, showing SLP on the left and z500 on the right side.}\label{fig:ERA5}
+\end{figure}
+
+\subsubsection{Future Climate Projections - Change Analysis}\label{future-climate-projections---change-analysis}
+
+We use ensemble datasets which projected future climate conditions under specific scenarios,
+to evaluate future changes in atmospheric circulation, considering internal variability,
+essential for accurate and reliable climate change projections.
+The data should be preprocessed with the same variables, scale, domain, resolution as training data.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  CanESM2 \citep{CanESM2}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Name: CanESM2 (Canadian Earth System Model version 2)
+  \item
+    Provider: Canadian Centre for Climate Modelling and Analysis (CCCma)
+  \item
+    Model Used: Climate Model Intercomparison Project phase 5 (CMIP5)
+  \item
+    Ensemble Members: 50 (due to downloading limitation, we only used 12 ensemble)
+  \item
+    Scenario: historical, simulate the condition as observed past climate from 1850 to at least 2005 \citep{Friedlingstein2008}.
+  \item
+    Temporal Coverage:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Historical Reference: 1971--2000
+    \item
+      Future Projections: 2031--2060
+    \end{itemize}
+  \item
+    Spatial Resolution: Around 2.8°
+  \end{itemize}
+\item
+  SMHI-LENS \citep{Wyser2021}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Name: SMHI-LENS (Swedish Meteorological and Hydrological Institute Large Ensemble)
+  \item
+    Provider: Swedish Meteorological and Hydrological Institute
+  \item
+    Model Used: EC-Earth3 (Climate Model Intercomparison Project phase 6, CMIP6)
+  \item
+    Ensemble Members: 50 (to effectively capture internal variability)
+  \item
+    Scenario: SSP3-RCP7.0, representing a high GHG emission pathway
+  \item
+    Temporal Coverage:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Historical Reference: 1991--2020
+    \item
+      Future Projections: 2071--2100
+    \end{itemize}
+  \item
+    Spatial Resolution: Around 0.7°
+  \end{itemize}
+\end{enumerate}
+
+As a result with higher greenhouse gas emission under SSP3-RCP7.0 scenario, and with a more distant future in the paper:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Future warming and circulation shifts might be more pronounced than our implementation.
+\item
+  Frequency changes in HB CTs may appear larger in the paper, simply because the climate change signal is stronger.
+\end{enumerate}
+
+\subsection{Data Preprocessing Steps}\label{data-preprocessing-steps}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Reset spatial domain: only use data in Europe and the North Atlantic region (30°N--75°N latitude, 65°W--45°E longitude)
+\item
+  Spatial Regridding: All datasets were interpolated to a common 5° grid resolution, ensuring consistency and computational efficiency
+\item
+  Seasonal Centering: Applied to remove seasonal biases, helping the model better recognize atmospheric patterns independently of seasonal influences.
+\end{enumerate}
+
+\section{Models and Training}\label{models-and-training}
+
+\subsection{CNN Architecture}\label{cnn-architecture}
+
+The classification model used in this study is based on a CNN,
+specifically designed to handle the image-like structure of atmospheric data (SLP and z500).
+The CNN architecture (Figure \ref{fig:network}) comprises:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Input Layer: Two separate input channels corresponding to SLP and z500.
+\item
+  Convolutional Layers: Two convolutional layers applied to extract spatial patterns and features from input atmospheric fields. These layers use convolutional kernels to identify local and spatially coherent patterns.
+\item
+  Dropout Layer: Included for regularization to mitigate overfitting by randomly dropping out units during training, thus improving the model's generalization.
+\item
+  Fully Connected Layers: Two fully connected layers following the convolutional and dropout layers, used for integrating learned spatial features into final predictions of HB CTs.
+\item
+  Output Layer: Outputs softmax probabilities for each of the 29 HB CTs, which are then converted into classifications.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/network} 
+
+}
+
+\caption{Schematic diagram of the CNN network}\label{fig:network}
+\end{figure}
+
+\subsection{Training Protocol}\label{training-protocol}
+
+\subsubsection{Adam Optimizer}\label{adam-optimizer}
+
+Adam (Adaptive Moment Estimation) \citep{Mehta2019} is an optimization algorithm widely used for training neural networks.
+It combines the benefits of two other methods---AdaGrad \citep{Ward2020}, which adapts the learning rate for each parameter,
+and RMSProp \citep{Zou2019}, which considers the exponentially decaying average of squared gradients---to adjust the learning rates adaptively during training.
+
+Adam optimizer efficiently handles noisy and sparse gradients, common in deep learning tasks,
+facilitating faster convergence and better handling of large parameter spaces typical of CNNs.
+This makes Adam particularly suitable for our CNN-based classification model, ensuring effective and efficient training.
+
+\subsubsection{Bayesian Optimization for Hyperparameter Tuning}\label{bayesian-optimization-for-hyperparameter-tuning}
+
+To achieve an optimal configuration of hyperparameters for our CNN, we employed Bayesian optimization \citep{Garnett2023},
+specifically using the Tree-structured Parzen Estimator (TPE) method \citep{Ozaki2022} implemented in the Optuna library.
+Bayesian optimization is particularly suited for deep learning hyperparameter tuning due to its efficiency and ability to intelligently balance exploration and exploitation of the hyperparameter space, thus significantly reducing computational cost compared to grid or random search.
+
+Specifically, the following hyperparameters were optimized:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Learning Rate:
+  The learning rate controls the magnitude of updates to the network weights during training. We allowed this hyperparameter to vary logarithmically between \(10^{-4}\) and \(10^{-2}\), enabling the optimizer to effectively explore both subtle and more substantial updates in network parameters.
+\item
+  Weight Decay:
+  Serving as a regularization term to prevent overfitting, the weight decay was also sampled on a logarithmic scale ranging from \(10^{-5}\) to \(10^{-3}\). This enabled fine control over model complexity and encouraged better generalization.
+\item
+  Dropout Rate:
+  Dropout prevents overfitting by randomly dropping neurons during training, forcing the model to learn robust representations. We tuned dropout rate uniformly within a range from 0.2 to 0.6, allowing optimization of the model's regularization intensity.
+\item
+  Convolutional Layer Parameters:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Number of Output Channels in First Convolutional Layer (out\_channels1):
+    Chosen categorically from {[}4, 8, 16{]}, optimizing the depth and feature extraction capability of initial convolutional operations.
+  \item
+    Number of Output Channels in Second Convolutional Layer (out\_channels2):
+    Selected from {[}8, 16, 32{]}, further refining the network's capability to learn hierarchical spatial patterns.
+  \item
+    Kernel Size:
+    Kernel size impacts the spatial context the model considers when learning features. We considered kernel sizes of {[}3, 5, 7{]}, balancing between capturing detailed local patterns and broader spatial structures.
+  \item
+    Fully Connected Layer Size:
+    The number of neurons in the fully connected layer was chosen from {[}32, 64, 128{]}, directly influencing the model's ability to integrate learned spatial features into higher-level abstractions suitable for classification.
+  \end{itemize}
+\end{enumerate}
+
+The Bayesian optimization was performed over 100 trials, systematically exploring these hyperparameters.
+Each trial evaluated a distinct combination of parameters based on validation accuracy.
+The final selection of hyperparameters was determined by the combination that produced the highest validation accuracy,
+ensuring the CNN model's optimal performance on unseen data while minimizing the computational burden associated with hyperparameter tuning.
+
+\subsubsection{Nested Cross-Validation}\label{nested-cross-validation}
+
+Nested cross-validation \citep{Zhong2023} involves two cross-validation loops:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Outer Loop: Evaluates the generalization performance of the model on independent test sets.
+\item
+  Inner Loop: Used for hyperparameter tuning and model selection within each training fold.
+\end{enumerate}
+
+We use 5 folds of outer loop and 5 folds of inner loop.
+
+\subsubsection{Epochs and Early Stopping}\label{epochs-and-early-stopping}
+
+Training was set to a maximum of 35 epochs, with early stopping criteria implemented, patience of 6 epochs without improvement,
+to prevent overfitting and reduce training time.
+
+\subsection{Predicting Technique}\label{predicting-technique}
+
+\subsubsection{Ensemble Learning}\label{ensemble-learning}
+
+Ensemble learning \citep{Dietterich2002} combines predictions from multiple models to enhance predictive performance.
+In this case, multiple CNN models trained with different initial conditions.
+A deep ensemble of 30 independently trained CNN models, each initialized with different random weights, is utilized.
+
+Predictions from individual CNN models are aggregated using a weighted averaging method, where each model's contribution is proportional to its validation performance.
+This enhances robustness, reduces prediction uncertainty, and provides stable and reliable classification results by capturing a wider range of atmospheric variability.
+
+\subsubsection{Transitional Smoothing}\label{transitional-smoothing}
+
+According to the definition, a HB CT must last at least three days \citep{Hess1952} to represent a stable atmospheric pattern.
+Without enforcing this constraint, the raw neural network predictions may contain short, noisy transitions that are meteorologically implausible.
+Thus, transition smoothing is necessary to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Remove unrealistic, very short-lived classifications.
+\item
+  Produce physically consistent and stable time series of HB CTs.
+\item
+  Ensure that predictions align with domain-specific expectations.
+\end{enumerate}
+
+According to the original paper:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Step 1: Identify all transitions where the predicted HB CT lasts fewer than three days.
+\item
+  Step 2: Check neighborhood consistency:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If the HB CT before and after the short transition is the same, assign this type to the transition days.
+  \end{itemize}
+\item
+  Step 3: If different types occur before and after:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Compare the predicted probabilities (confidence scores) for each neighboring type.
+  \item
+    Assign the transition days to the neighbor with the higher predicted probability (i.e., stronger membership).
+  \end{itemize}
+\end{enumerate}
+
+This method ensures that short transitions are corrected in a physically meaningful way, based on both label consistency and model confidence.
+Since the original code is not available, our transition\_smoothing function follows the paper's logic but introduces minor adaptations for greater robustness and flexibility:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1199}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2734}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2996}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3071}}@{}}
+\caption{Transitional smoothing implementation}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Aspect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Paper Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Our Code Implementation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reason for Change
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Aspect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Paper Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Our Code Implementation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reason for Change
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Minimum duration & 3 days fixed & min\_duration parameter (default=3) & Makes the method flexible for other settings. \\
+Neighbor block length trust & Not specified clearly & min\_neighbor\_run\_length parameter (default=2) & Ensures smoothing only when neighboring segments are stable enough. \\
+Handling first and last segments & Implicitly ignored & Explicitly handled & Avoids out-of-bound errors at sequence edges. \\
+Probability averaging & Single-point comparison & Average probability across transition segment & More robust by considering entire transition region, not a single timestep. \\
+Fallback behavior when neighbors are not strong & Not detailed & Fallback to the only trusted neighbor if one side is strong enough & Avoids wrong smoothing when one neighbor is unreliable. \\
+\end{longtable}
+
+\section{Results}\label{results}
+
+\subsection{Classification Performance}\label{classification-performance}
+
+\subsubsection{F1-score}\label{f1-score}
+
+The classification performance of our model was evaluated using a confusion matrix, F1-scores per class,
+macro F1-score \citep{Opitz2019}, and overall accuracy \citep{Alberg2004}, following the approach used in the reference study \citep{Mittermeier2022}.
+The overall accuracy achieved by our model on the cross-validation test set is 53.17\%, and the macro F1-score is 55.14\%.
+Among all HB CTs (Appendix Figure \ref{fig:f1score}), the best performing classes in terms of F1-score are WZ (70.21), HM (63.7), and HB (62.78).
+These types exhibit distinct spatial patterns, aiding CNN identification.
+The lowest F1-scores are observed for classes like NA (33.61) and SEZ (44.37).
+These are likely due to class imbalance caused by rare occurrence.
+Generally, accuracy for each type is quite high, which may imply overfitting.
+
+The confusion matrix (Appendix Figure \ref{fig:conf}) shows that most misclassifications occur among HB CTs with similar dynamical structures, consistent with expectations from atmospheric science. Diagonal dominance is visible but moderate, reflecting the challenging nature of this classification task.
+
+Compared to the paper results, which reported an overall accuracy of 41.1\% and a macro F1-score of 38.3\% \citep{Mittermeier2022},
+our model achieves slightly higher overall accuracy and macro F1-score.
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{Metric comparison}\tabularnewline
+\toprule\noalign{}
+Metric & Paper (\%) & Our Model (\%) \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Metric & Paper (\%) & Our Model (\%) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Macro F1-score & 38.3 & 55.1 \\
+Overall accuracy & 41.1 & 53.2 \\
+\end{longtable}
+
+The boxplots of F1-score under each HB CT (Figure \ref{fig:box}; Appendix Figure \ref{fig:boxpaper}) confirm our conclusion:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Original study has considerably lower overall F1-scores (around 0.3--0.5), indicating challenges in reliable classification.
+\item
+  Our model demonstrates much higher stability with F1-scores generally between 0.80--0.95, suggesting improved reliability and robustness in identifying circulation patterns.
+\end{enumerate}
+
+\subsubsection{RMSE}\label{rmse}
+
+To further evaluate the quality of the predictions, the Root-Mean-Square Error (RMSE) between the predicted HB CT composites and the true label composites was calculated for variable SLP.
+
+Equation for the calculation of the RMSE with I being the predicted image (in our case: signature plot of the deep learning classifier) and K being the reference image (in our case: signature plot of the labels).
+M are number of rows and N the number of columns
+of the pictures to compare.
+The RMSE thus compares the pixel-wise values of two images.
+A value of zero indicates a perfect match \citep{Mittermeier2022, Mueller2020}.
+\[\text{RMSE} = \sqrt{\frac{1}{M\times N}\sum_{i=0,j=0}^{M-1,N-1}[I(i,j)-K(i,j)]^2}\]
+
+Additionally, RMSEs for false positives and false negatives were computed separately.
+
+The average RMSE for our implementation's predictions across all HB CTs is 0.88,
+while the false positives and false negatives yielded RMSEs of 1.08 and 1.23, respectively.
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{RMSE comparison}\tabularnewline
+\toprule\noalign{}
+RMSE Category & Paper & Implementation \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+RMSE Category & Paper & Implementation \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Prediction RMSE & 0.89 & 0.74 \\
+False positives RMSE & 1.09 & 1.45 \\
+False negatives RMSE & 1.28 & 0.69 \\
+\end{longtable}
+
+Our implementation achieves a lower prediction RMSE (0.74) compared to the original paper (0.89) \citep{Mittermeier2022}.
+This indicates that, on average, the spatial patterns of the correctly predicted HB CTs are more similar to the true labels in our model than in the reference study.
+
+However, the false positives RMSE is much higher (1.45) than in the paper (1.09) \citep{Mittermeier2022}.
+This suggests that when our implementation wrongly predicts a HB CT,
+the resulting spatial pattern is less similar to the true pattern than in the paper.
+
+Our implementation shows a lower false negatives RMSE (0.69) compared to the paper (1.28) \citep{Mittermeier2022}.
+This means that when the model misses a true HB CT,
+the spatial signature remains relatively closer to the correct pattern than in the paper.
+
+The overall pattern suggests that:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Our implementation is better at maintaining correct structures when making predictions or missing true types.
+\item
+  However, when making incorrect predictions (false positives), our implementation model tends to produce worse distortions than the model used in the paper.
+\end{enumerate}
+
+\subsection{Signature Plot Analysis}\label{signature-plot-analysis}
+
+Figure \ref{fig:sig} shows the signature plots for four HB CTs selected based on our RMSE results:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Two HB CTs with lowest RMSE: WZ and TRW (best performance)
+\item
+  Two HB CTs with highest RMSE: NA and HNFA (worst performance)
+\end{enumerate}
+
+For each HB CT, four different composite plots are displayed:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Labels: Composite of true labels.
+\item
+  Predictions: Composite of model predictions.
+\item
+  False Positives: Days predicted as the HB CT but labeled differently.
+\item
+  False Negatives: Days labeled as the HB CT but predicted differently.
+\end{enumerate}
+
+RMSE values are shown below each panel, comparing each composite to the true label composite.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/slp_signature_plots} 
+
+}
+
+\caption{Signature plots of four selected circulation patterns at slp. Column 1: labels showing the indicated HB CT, Column 2: deep ensemble predictions showing the indicated HB CT, Column 3: signature pattern, when the deep ensemble predicts the indicated HB CT while labels state differently, Column 4: labels stating the indicated HB CT while deep ensemble predicts differently. The RMSE values are calculated by comparing the respective signature plot to the signature plot of the labels (column 1).}\label{fig:sig}
+\end{figure}
+
+Based on our results, we can observe that:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  WZ:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The predicted composite closely matches the label pattern (RMSE = 0.25).
+  \item
+    False positives and false negatives show moderate RMSE (0.81 and 0.36), indicating stable identification of WZ.
+  \end{itemize}
+\item
+  TRW:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Predictions for TRW are also accurate (RMSE = 0.32).
+  \item
+    False positives (0.92) and false negatives (0.46) suggest TRW is generally recognized reliably.
+  \end{itemize}
+\item
+  NA:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Predictions for NA have high RMSE (2.89), indicating difficulty in capturing the correct structure.
+  \item
+    False positives (5.15) show very large errors, and false negatives (0.78) suggest missing NA patterns is common.
+  \end{itemize}
+\item
+  HNFA:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Predictions for HNFA also show high RMSE (1.20).
+  \item
+    False positives (2.80) and false negatives (1.09) are large, implying HNFA is a difficult type for the model to classify.
+  \end{itemize}
+\end{enumerate}
+
+Differences from the original paper (Appendix Figure \ref{fig:sigpaper}) arise primarily from data variations, model differences, and random initialization.
+
+Although the specific CTs selected differ, the general trend remains consistent with the findings of the paper:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Some HB CTs are easier to predict (low RMSE), others are harder (high RMSE).
+\item
+  False positives tend to have higher RMSE than correct predictions.
+\item
+  A larger discrepancy in the color distribution indicates a higher complexity of HB CT, and false negatives vary depending on HB CT complexity.
+\end{enumerate}
+
+Thus, while specific HB CTs differ, our results fundamentally agree with the conclusions of the paper that certain patterns are systematically easier or harder to classify, and signature plots are effective to visualize these tendencies.
+
+\subsection{Frequency Distribution of HB CTs}\label{frequency-distribution-of-hb-cts}
+
+Figure \ref{fig:count} shows the frequency distribution of the 29 HB CTs, expressed as the average number of days per year for the period 1950--1980.
+For each HB CT, the frequency derived from the true labels (blue bars) is compared to the frequency derived from the network predictions (yellow bars).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/daycount} 
+
+}
+
+\caption{Frequency distribution of the 29 HB CTs in number of days per year for the training period 1950–1980 (blue) and for predictions of the CNN (yellow).}\label{fig:count}
+\end{figure}
+
+Overall, the CNN reliably reproduces observed HB CT frequencies:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Dominant HB CTs (e.g., WZ, HM) are captured accurately, reflecting robust model learning.
+\item
+  Rarer HB CTs (e.g., NA, SZ) exhibit minor deviations, suggesting challenges in accurately learning patterns due to fewer examples, which may indicate slight overfitting.
+\end{enumerate}
+
+In comparison with the original study (Appendix Figure \ref{fig:countpaper}), despite differences in dataset periods (our study: 1950--1980; original: 1900--1980), frequency patterns remain consistent. Slight discrepancies in rarer HB CTs are likely due to dataset differences, emphasizing the importance of extended or more balanced training datasets for better generalization.
+
+The agreement between the label frequencies and the network predictions, as well as the similarity to the paper's findings, indicates that our model effectively learns the relative occurrence rates of the different HB CTs.
+Overall, the frequency distribution results support the conclusions of the original study, confirming that the network can reliably reproduce the occurrence rates of various HB CTs.
+
+\subsection{Future Change}\label{future-change}
+
+Figure \ref{fig:boxn} and Figure \ref{fig:box} show the relative changes in the frequency of occurrence of the 29 HB CTs between the future period (2031--2060) and the historical reference period (1971--2000), for the entire year, winter half-year, and summer half-year, based on 12 climate model realizations.
+Figure \ref{fig:boxn} is the conclusion directly from predicted results, while Figure \ref{fig:box} is obtained after transition smoothing.
+Positive values indicate an increase in occurrence; negative values indicate a decrease.
+The lower panels show the F1-scores of the classification model ensemble.
+Higher F1-scores indicate better classification stability and reliability.
+The grouping by wind direction allows visual comparison of performance across different HB CT categories.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/non_s_combined_boxplot} 
+
+}
+
+\caption{Boxplots of frequency change and f1 score without transitional smoothing. Upper plots show the change in the relative frequency of occurrence (\%) of the HB CTs between the future 2031–2060 and the reference period 1971–2000 for the entire year, the winter half-year (ONDJFM) and the summer half-year (AMJJAS).  Lower plots illustrate the spread of F1-scores.}\label{fig:boxn}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/combined_boxplot} 
+
+}
+
+\caption{Boxplots of frequency change and f1 score after transitional smoothing. Upper plots show the change in the relative frequency of occurrence (\%) of the HB CTs between the future 2031–2060 and the reference period 1971–2000 for the entire year, the winter half-year (ONDJFM) and the summer half-year (AMJJAS).  Lower plots illustrate the spread of F1-scores.}\label{fig:box}
+\end{figure}
+
+Without transition smoothing (Figure \ref{fig:boxn}):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The boxplots show relatively smaller spreads for most HB CTs.
+\item
+  Most relative changes are within ±50\%.
+\item
+  Fewer extreme outliers are observed, and the whiskers are relatively short.
+\item
+  The overall signal is dominated by noise, making it hard to detect consistent climate change trends.
+\end{enumerate}
+
+With transition smoothing (Figure \ref{fig:box}):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The boxplots show larger spreads, particularly for rare HB CTs.
+\item
+  Relative changes frequently extend beyond ±50\%, and even approach ±100\% in some cases.
+\item
+  More extreme outliers appear.
+\item
+  F1-score distributions are lower and broader, indicating less stable classification performance.
+\end{enumerate}
+
+Overall, transition smoothing, while theoretically beneficial, introduces higher internal variability in our implementation, complicating clear signal identification.
+Variability differences from the original study stem from methodological factors (ensemble size, smoothing implementation) and underlying climate model characteristics.
+
+Our findings reaffirm the value of a multi-ensemble approach and careful consideration of methodological choices when projecting future circulation trends,
+underscoring the need for robust ensemble analysis techniques to better discern climate-driven circulation changes from internal variability.
+
+The original study (Appendix Figure \ref{fig:boxpaper}) shows relatively controlled variability, mostly within ±50\% \citep{Mittermeier2022}, and fewer extreme outliers, indicating relatively stable and moderate shifts in HB CTs.
+Our results (Figure \ref{fig:boxn}) exhibit larger variability, particularly notable in specific HB CTs such as NA, SEA, HNFZ, and SZ, with frequency changes frequently exceeding ±50\%, even reaching ±100\%.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Entire Year:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Original study shows moderate shifts centered around zero, with clear signals for types like WA and SEA \citep{Mittermeier2022}.
+  \item
+    Our implementation shows notably higher variability with clear signals (e.g., strong increase in HNZ, HM and significant decreases in HB and NEZ).
+  \end{itemize}
+\item
+  Winter Half-Year:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Original study depicts clear moderate increases for WW and HFA with relatively smaller variability \citep{Mittermeier2022}.
+  \item
+    Our data demonstrate significant changes with pronounced variability and stronger extremes, especially in HNZ and rare CTs like NA and SZ.
+  \end{itemize}
+\item
+  Summer Half-Year:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Original data indicate mild variability and clear, moderate increases and decreases in specific types (e.g., decreases in HNFZ, increases in WA) \citep{Mittermeier2022}.
+  \item
+    Our results again illustrate increased variability with substantial increases (e.g., HNZ, HM) and decreases (e.g., HB, NEZ).
+  \end{itemize}
+\end{enumerate}
+
+In both cases, the summer half-year has a greater influence on the entire year, despite the winter half-year showing higher variability.
+Rare CTs such as NA and SZ are observed with significant changes.
+It would be interesting to analyze how rare conditions evolve,
+however, due to the unbalanced data, the results are not very reliable.
+
+Key CT Differences:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  WA (Westerly Anticyclonic):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Our results show only slight increases, with less pronounced signals for WA, especially compared to significant changes in other types.
+  \item
+    Original study consistently shows WA increasing clearly across all seasons \citep{Mittermeier2022}.
+  \end{itemize}
+\item
+  HNZ (Icelandic High Cyclonic):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    In our results, HNZ consistently shows marked increases, particularly pronounced in the summer and winter half-years.
+  \item
+    Original study presents less dramatic decreasing changes for HNZ, reflecting a critical methodological or scenario-driven difference \citep{Mittermeier2022}.
+  \end{itemize}
+\item
+  NA and SZ (Northerly Anticyclonic and Southerly Cyclonic):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Our results exhibit significantly larger variability and extreme reductions in NA, while SZ shows extreme negative changes particularly in summer.
+  \item
+    Original study maintains relatively modest decreasing changes for these types \citep{Mittermeier2022}.
+  \end{itemize}
+\end{enumerate}
+
+The differences in projected frequency changes between our results and the original study primarily stem from:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Time period difference (2031-2060 vs.~2071-2100).
+\item
+  Scenario differences: CanESM2 model (historical) in our study vs.~original SMHI-LENS (SSP3-RCP7.0).
+\item
+  Model and methodological distinctions: Implementation differences (e.g., transitional smoothing, dataset variations, and resolution).
+\item
+  Ensemble size effects: Our smaller ensemble size (12 vs.~original 50) could amplify internal variability signals.
+\end{enumerate}
+
+These differences underline the sensitivity of CT analysis to methodological choices, highlighting the importance of transparent documentation of scenario assumptions and model details to ensure the accurate interpretation and comparability of future climate studies.
+
+\section{Conclusion and Outlook}\label{conclusion-and-outlook}
+
+In this study, we successfully implemented a CNN-based deep learning approach to classify large-scale CTs over Europe, building upon the established HB framework. Using high-resolution ERA5 data for model training, our method achieved an overall accuracy of 53.17\% and a macro F1-score of 55.14\%, clearly outperforming traditional classification approaches.
+
+The CNN model effectively learned dominant circulation patterns, yet faced challenges classifying rare or inherently complex CTs. These limitations indicate potential issues of class imbalance and inherent labeling uncertainties associated with manual classifications.
+One potential improvement to the statistical analysis would be reducing the number of subdivisions of CTs. Subdividing CT according to the wind direction of the jet stream, for example, could increase the robustness of the results. Additionally, the original study found that the most frequent misclassifications occurred between pairs of anticyclonic and cyclonic circulation types \citep{Mittermeier2022}, which could be addressed through refined classification methods. Furthermore, future research should be conducted to quantify human-level errors in labelling to better understand the impacts of manual classification biases.
+
+Besides the primary training session and results shown in this report,
+we conducted another model training experiment using a narrower range of hyperparameters.
+The results, which are illustrated in the presentation, demonstrated noticeably different classification performance compared to the setup we introduced here.
+In particular, I suspect that the size of the fully connected linear layers is the mean reason for this difference. Since in earlier experiments with narrower range of hyperparameters, we set the fully connected layer size as fixed 50 dimensions, however, in the latest optimization round, where more extensive hyperparameter tuning were applied, the model consistently favored a dimension size of 128, which leads to high accuracy for each HB CTs. Therefore, the model shows good performance on the current dataset, it is important to note that this does not necessarily guarantee the absence of overfitting.
+
+Due to limited computational resources, we were unable to perform a more thorough investigation to validate these observations or further optimize the model architecture. Future work should focus on systematically assessing the impact of fully connected layer sizes and further regularization strategies to ensure model robustness and generalization.
+
+The analysis of frequency changes in both our implementation and original paper reveals that for most HB CTs, the changes fall within a range of ±5 days (relatively ±50\%) (Appendix Figure \ref{fig:boxabs}; Figure \ref{fig:box}; Appendix Figure \ref{fig:boxpaperabs}; Appendix Figure \ref{fig:boxpaper}). In the original study, the most significant changes in frequency were observed in the WA circulation type (Appendix Figure \ref{fig:boxpaper}) \citep{Mittermeier2022}, while in the own-built model, the HM and HNZ circulation types experienced the largest shifts in frequency. Notably, our results differ from previous studies, primarily due to distinct methodological choices such as dataset selection, scenario assumptions, and smoothing techniques. These variations underline the sensitivity of HB CTs analysis and stress the importance of transparent methodological reporting.
+
+When focusing only on the frequency of HB CTs, without considering their duration, it is important to highlight that the duration of a HB CT significantly influences the amplitude of weather extremes. This underscores the need to integrate both frequency and duration for a more comprehensive understanding of weather patterns. Duration of a HB CT impacts the amplitude of a weather extreme.
+
+To further evaluate the uncertainties in frequency changes, it would be beneficial to combine multi-model and single-model ensembles under different forcing scenarios. This approach could help assess the uncertainties arising from various climate models and the assumptions in different forcing scenarios.
+
+For future studies, we recommend quantifying human-level errors in labeling to understand better the impacts of manual classification biases.
+Additionally, models that explicitly capture temporal continuity, such as Deep Hidden Markov Models \citep{Yu2015} or temporal-aware CNN architectures (e.g., ConvLSTM \citep{Moishin2021}),
+could enhance prediction accuracy by directly modeling the persistence characteristic inherent in circulation patterns \citep{Mittermeier2022}.
+
+\section{Appendix}\label{appendix}
+
+\subsection{Statement}\label{statement}
+
+The implementation was carried out using Python version 3.9.18.
+
+\subsection{Figures}\label{figures}
+
+Synoptic patterns of the 29 HB CTs using ERA20C (Figure \ref{fig:ERA20C}) \citep{Mittermeier2022}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/paper/circulation_types} 
+
+}
+
+\caption{Synoptic patterns of the 29 HB CTs created using ERA-20C data averaged over the period 1900 -1980, showing SLP on the left and z500 on the right side.}\label{fig:ERA20C}
+\end{figure}
+
+HB CTs (Figure \ref{fig:cts})
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/paper/cts} 
+
+}
+
+\caption{HB CTs}\label{fig:cts}
+\end{figure}
+
+F1 score comparison table (Figure \ref{fig:f1score})
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/f1} 
+
+}
+
+\caption{Macro F1}\label{fig:f1score}
+\end{figure}
+
+Signature plots of paper - SLP (Figure \ref{fig:sigpaper}) \citep{Mittermeier2022}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/paper/slp_signature_plots} 
+
+}
+
+\caption{Signature plots of four selected circulation patterns at slp. Column 1: labels showing the indicated HB CT, Column 2: deep ensemble predictions showing the indicated HB CT, Column 3: signature pattern, when the deep ensemble predicts the indicated HB CT while labels state differently, Column 4: labels stating the indicated HB CT while deep ensemble predicts differently. The RMSE values are calculated by comparing the respective signature plot to the signature plot of the labels (column 1). The four HB CTs are chosen as positive (green) and negative (red) examples.}\label{fig:sigpaper}
+\end{figure}
+
+Frequency distribution of paper (Figure \ref{fig:countpaper}) \citep{Mittermeier2022}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/paper/daycount} 
+
+}
+
+\caption{Frequency distribution of the 29 HB CTs in number of days per year for the training period 1900–1980 (blue) and for predictions of the CNN (yellow).}\label{fig:countpaper}
+\end{figure}
+
+Boxplot of absolute future change and F1 score of our implementation (Figure \ref{fig:boxabs})
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/boxplot_freq_change_abs} 
+
+}
+
+\caption{Boxplots of frequency change and f1 score. Upper plots show the change in the absolute frequency of occurrence (days) of the HB CTs between the future 2031–2060 and the reference period 1971–2000 for the entire year, the winter half-year (ONDJFM) and the summer half-year (AMJJAS).  Lower plots illustrate the spread of F1-scores.}\label{fig:boxabs}
+\end{figure}
+
+Boxplot of future change and F1 score of paper (Figure \ref{fig:boxpaper}) \citep{Mittermeier2022}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/paper/boxplot} 
+
+}
+
+\caption{Boxplots of frequency change and f1 score. Upper plots show the change in the relative frequency of occurrence (\%) of the HB CTs between the future 2031–2060 and the reference period 1971–2000 for the entire year, the winter half-year (ONDJFM) and the summer half-year (AMJJAS).  Lower plots illustrate the spread of F1-scores.}\label{fig:boxpaper}
+\end{figure}
+
+Boxplot of absolute future change and F1 score of paper (Figure \ref{fig:boxpaperabs}) \citep{Mittermeier2022}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/paper/boxplot_abs} 
+
+}
+
+\caption{Boxplots of frequency change and f1 score. Upper plots show the change in the absolute relative frequency of occurrence (days) of the HB CTs between the future 2031–2060 and the reference period 1971–2000 for the entire year, the winter half-year (ONDJFM) and the summer half-year (AMJJAS).  Lower plots illustrate the spread of F1-scores.}\label{fig:boxpaperabs}
+\end{figure}
+
+RMSE table of our implementation - SLP (Figure \ref{fig:rmse})
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/rmse} 
+
+}
+
+\caption{RMSE - slp}\label{fig:rmse}
+\end{figure}
+
+RMSE table of paper - SLP (Figure \ref{fig:rmsepaper})
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/paper/rmse} 
+
+}
+
+\caption{RMSE - slp}\label{fig:rmsepaper}
+\end{figure}
+
+Confusion matrix of our implementation (Figure \ref{fig:conf})
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/confusion} 
+
+}
+
+\caption{Confusion matrix}\label{fig:conf}
+\end{figure}
+
+Confusion matrix of paper (Figure \ref{fig:confpaper}) \citep{Mittermeier2022}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/paper/confusion} 
+
+}
+
+\caption{Confusion matrix}\label{fig:confpaper}
+\end{figure}
+
+Full signature plot of our implementation - SLP (Figure \ref{fig:sigfull})
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/slp_signature_plots_all} 
+
+}
+
+\caption{Signature plot}\label{fig:sigfull}
+\end{figure}
+
+Full signature plot of paper - SLP (Figure \ref{fig:sigfullpaper}) \citep{Mittermeier2022}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{work/01-weatherpattern/figures/paper/slp_signature_plots_all} 
+
+}
+
+\caption{Signature plot}\label{fig:sigfullpaper}
+\end{figure}
 
 \chapter{Causal Discovery - Constrain uncertainties in climate projections}\label{causal-discovery---constrain-uncertainties-in-climate-projections}
 
@@ -274,7 +1227,7 @@ For details, head over to the \href{https://github.com/henrifnk/Seminar_ClimateN
 
 \emph{Supervisor: Henri Funk}
 
-\section{Abstract}\label{abstract}
+\section{Abstract}\label{abstract-1}
 
 Understanding and evaluating the performance of climate models is essential for improving predictions of future climate variability. Traditional evaluation techniques often fall short in identifying deep-seated structural biases in models. This study introduces a novel process-oriented evaluation approach using causal discovery methods, specifically the PCMCI algorithm, to assess global drought teleconnections. By applying the PCMCI algorithm to SPI-12 precipitation indices from both reanalysis (ERA5) and climate model (CSIRO ACCESS ESM 1.5) datasets, we extract causal networks that reveal underlying climate modes and their interactions. A Varimax-rotated principal component analysis (PCA) was used to reduce data dimensionality, and selected components were analyzed to evaluate the consistency between observed and simulated teleconnections. Results highlight significant differences in causal link structures between the datasets, particularly in ocean-dominated climate modes, suggesting that while PCMCI has limitations in physical interpretation, it holds strong potential for comparative climate model diagnostics. Our findings underscore the importance of integrating causal inference tools into the climate model evaluation toolbox to better constrain model uncertainty and improve future projections.
 
@@ -339,7 +1292,7 @@ Where \(Z^Y_t\) represents the parents of Y excluding \(X_{t-\tau}\), and \(Z^X_
 
 In our implementation, we used partial correlation as the conditional independence test with standardized time series data. The time lag parameters were specifically configured with \texttt{tau\_min\ =\ 1} and \texttt{tau\_max\ =\ 5}, allowing us to capture causal relationships occurring between 1 and 5 months.This range is sufficient to detect both relatively rapid atmospheric teleconnections and slower oceanic teleconnection patterns. We deliberately employed a stringent significance threshold with \texttt{pc\_alpha\ =\ 0.0001} to ensure high confidence in the detected causal links, effectively minimizing false positives while accepting a potentially higher rate of false negatives. This conservative approach prioritizes the reliability of identified teleconnections over their quantity, particularly important when comparing model outputs to observational data. The resulting causal networks represent directional relationships between drought patterns, providing insights into the causal mechanisms driving global drought teleconnections and enabling rigorous evaluation of climate model performance in reproducing these teleconnection structures.
 
-\section{Results}\label{results}
+\section{Results}\label{results-1}
 
 The reanalysis dataset we used is the Copernicus ERA5 post-processed daily statistics on single levels from 1940 to present. CSIRO ACCESS ESM 1.5 data was used as the climate model dataset. For both datasets the years 1950 until (including) 1990 were used. The ERA5 dataset contains daily precipitation values at 0.25° x 0.25° resolution. ACCESS ESM 1.5 data contains daily precipitation rate values at 1.875° x 1.25° resolution. Both datasets were aggregated to total monthly precipitation in mm and regridded to a 2° x 2° resolution using bilinear interpolation.
 
@@ -485,7 +1438,7 @@ Furthermore, the structural differences detected in our analysis suggest specifi
 
 \emph{Supervisor: Henri Funk }
 
-\section{Abstract}\label{abstract-1}
+\section{Abstract}\label{abstract-2}
 
 Extreme cold events have long been associated with severe societal impacts on energy systems, infrastructure, and public health. Therefore, it remains important to explore the potential for such events to occur in the future and develop appropriate measures in advance. In the context of global warming, even cold winters in Central Europe have been affected by rising temperatures. In this study, we investigated whether extremely cold winters---such as the coldest winter in Germany in 1963---could still occur under a warming climate.
 
@@ -666,9 +1619,9 @@ Last, there are important limitations to consider. The distribution and frequenc
 
 \emph{Supervisor: }
 
-\section{Intro About the Seminar Topic}\label{intro-about-the-seminar-topic-2}
+\section{Intro About the Seminar Topic}\label{intro-about-the-seminar-topic-1}
 
-\section{Outline of the Booklet}\label{outline-of-the-booklet-2}
+\section{Outline of the Booklet}\label{outline-of-the-booklet-1}
 
 \chapter{Introduction}\label{introduction-3}
 
@@ -676,9 +1629,9 @@ Last, there are important limitations to consider. The distribution and frequenc
 
 \emph{Supervisor: }
 
-\section{Intro About the Seminar Topic}\label{intro-about-the-seminar-topic-3}
+\section{Intro About the Seminar Topic}\label{intro-about-the-seminar-topic-2}
 
-\section{Outline of the Booklet}\label{outline-of-the-booklet-3}
+\section{Outline of the Booklet}\label{outline-of-the-booklet-2}
 
 \chapter{Co-occurence of extremes}\label{co-occurence-of-extremes}
 
@@ -686,7 +1639,7 @@ Last, there are important limitations to consider. The distribution and frequenc
 
 \emph{Supervisor: Henri Funk}
 
-\section{Abstract}\label{abstract-2}
+\section{Abstract}\label{abstract-3}
 
 This report investigates the spatial dependence of extreme co-occurrence globally by employing hypothesis testing. The analysis aims to assess whether extreme events, such as temperature and precipitation extremes, exhibit spatial dependencies across the Earth's land surface. Using observational data from the Climatic Research Unit (CRU), the Berkeley Earth (BE) dataset, and the Global Precipitation Climatology Centre (GPCC), we explore both positive and negative spatial dependencies between extreme temperature and precipitation events. The study quantifies the intensity of spatial dependence by introducing the Probability Multiplication Factor (PMF), which provides a numerical representation of the strength of the spatial correlation between extreme events. Furthermore, we examine how spatial dependence varies with distance and latitude, offering insights into the geographic and climatological factors that influence the co-occurrence of extreme events. The findings demonstrate significant patterns of both positive and negative spatial dependencies, highlighting the complex relationships between extreme weather events and their spatial distribution across different regions.
 
@@ -705,7 +1658,7 @@ One striking example of spatial dependence in climate extremes is the 2010 Easte
 
 }
 
-\caption{Source: [https://earthobservatory.nasa.gov/images/45069/heatwave-in-russia]. Heat waves in Eastern Russia, Eastern Europe and Central Asia in 2010.}\label{fig:unnamed-chunk-3}
+\caption{Source: [https://earthobservatory.nasa.gov/images/45069/heatwave-in-russia]. Heat waves in Eastern Russia, Eastern Europe and Central Asia in 2010.}\label{fig:unnamed-chunk-4}
 \end{figure}
 \vspace{1em}
 
@@ -718,7 +1671,7 @@ Another example is tropical cyclones in the Atlantic, where clusters of hurrican
 
 }
 
-\caption{Source: [https://phys.org/news/2019-03-big-storm-clusters-hurricane-hotspots.html]. Hurricanes occur simultaneous in the Atlantic in 2019.}\label{fig:unnamed-chunk-4}
+\caption{Source: [https://phys.org/news/2019-03-big-storm-clusters-hurricane-hotspots.html]. Hurricanes occur simultaneous in the Atlantic in 2019.}\label{fig:unnamed-chunk-5}
 \end{figure}
 \vspace{1em}
 
@@ -741,7 +1694,7 @@ Statistically, tail dependence is a measure used to quantify the likelihood of s
 
 }
 
-\caption{Source: [https://freakonometrics.hypotheses.org/2435]. Tail dependence of 2 variables.}\label{fig:unnamed-chunk-5}
+\caption{Source: [https://freakonometrics.hypotheses.org/2435]. Tail dependence of 2 variables.}\label{fig:unnamed-chunk-6}
 \end{figure}
 \vspace{1em}
 
@@ -781,39 +1734,7 @@ X \sim \text{Binomial}(n = 1440, p = 0.005)
 \]
 \vspace{1em}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Load ggplot2 package}
-
-
-\CommentTok{\# Set parameters}
-\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{1440}  \CommentTok{\# Total number of months}
-\NormalTok{p }\OtherTok{\textless{}{-}} \FloatTok{0.005}  \CommentTok{\# Probability of extreme temperature events occurring each month}
-\NormalTok{m\_values }\OtherTok{\textless{}{-}} \DecValTok{0}\SpecialCharTok{:}\NormalTok{n  }
-
-\CommentTok{\# Calculate the cumulative probability density (CDF) of the binomial distribution}
-\NormalTok{cumulative\_probability }\OtherTok{\textless{}{-}} \FunctionTok{pbinom}\NormalTok{(m\_values, }\AttributeTok{size =}\NormalTok{ n, }\AttributeTok{prob =}\NormalTok{ p)}
-
-\CommentTok{\# Convert the results into a data frame}
-\NormalTok{df\_cdf }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{m =}\NormalTok{ m\_values, }\AttributeTok{CDF =}\NormalTok{ cumulative\_probability)}
-
-\CommentTok{\# Plot the CDF of the binomial distribution with limited x{-}axis range}
-\FunctionTok{ggplot}\NormalTok{(df\_cdf, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ m, }\AttributeTok{y =}\NormalTok{ CDF)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}  
-  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \DecValTok{13}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}  
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Binomial Distribution CDF (n = 1440, p = 0.005)"}\NormalTok{,  }
-       \AttributeTok{x =} \StringTok{"Number of Concurrences (month)"}\NormalTok{,  }
-       \AttributeTok{y =} \StringTok{"Cumulative Probability"}\NormalTok{) }\SpecialCharTok{+}  
-  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}  
-  \FunctionTok{xlim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{20}\NormalTok{) }\SpecialCharTok{+}  
-  \FunctionTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\AttributeTok{x =} \DecValTok{13}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.02}\NormalTok{, }\AttributeTok{label =} \StringTok{"Reject H0"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{1.5}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{8}\NormalTok{),  }
-        \AttributeTok{axis.title.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{6}\NormalTok{),   }
-        \AttributeTok{axis.title.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{6}\NormalTok{))  }
-\end{Highlighting}
-\end{Shaded}
-
-\begin{center}\includegraphics{book_files/figure-latex/unnamed-chunk-6-1} \end{center}
+\begin{center}\includegraphics{book_files/figure-latex/unnamed-chunk-7-1} \end{center}
 \vspace{1em}
 
 Using the binomial distribution's cumulative probability, we reject \(H_0\) if the number of months with concurrent extremes, \(x\), is greater than or equal to 13. That is, we reject \(H_0\) at the 0.05 significance level when \(x \geq 13\). This corresponds to the condition where:
@@ -846,7 +1767,7 @@ When the PMF exceeds or equals this threshold, i.e., when:
 
 it indicates the presence of spatially dependent extremes. Furthermore, the larger the PMF, the stronger the spatial dependence between the extreme events in the two grid cells.
 
-\section{Results}\label{results-1}
+\section{Results}\label{results-2}
 
 The study utilizes temperature and precipitation products from the Climatic Research Unit (CRU), the temperature product from Berkeley Earth (BE), and the precipitation product from the Global Precipitation Climatology Centre (GPCC). These datasets provide time series data spanning a 120-year period (1901--2020), enabling a comprehensive analysis of extreme event co-occurrence and spatial dependence.
 
@@ -865,7 +1786,7 @@ The negative concurrence strength of temperature extremes (Figure 4. C) is also 
 
 }
 
-\caption{Source: [https://www.science.org/doi/10.1126/sciadv.abo1638]. The distribution of PMF values across different grid cell pairs at varying distances. Each scatter point on the plot represents the PMF of a grid cell pair, while the color indicates the density of point distribution. Blue signifies the highest density, indicating more concentrated pairs, whereas red represents the lowest density, corresponding to more dispersed pairs. The data used is observed data.}\label{fig:unnamed-chunk-7}
+\caption{Source: [https://www.science.org/doi/10.1126/sciadv.abo1638]. The distribution of PMF values across different grid cell pairs at varying distances. Each scatter point on the plot represents the PMF of a grid cell pair, while the color indicates the density of point distribution. Blue signifies the highest density, indicating more concentrated pairs, whereas red represents the lowest density, corresponding to more dispersed pairs. The data used is observed data.}\label{fig:unnamed-chunk-8}
 \end{figure}
 \vspace{1em}
 
@@ -882,7 +1803,7 @@ For precipitation extremes (Figure 5.F), the spatial pattern of dependence is si
 
 }
 
-\caption{Source: [https://www.science.org/doi/10.1126/sciadv.abo1638]. The distribution of PMF values across different grid cell pairs at varying latitudes. Solid lines represent the PMF of positively concurrent regions, dashed lines indicate negatively concurrent regions. Four scenarios: observation with/without trend, historical simulated data and hist-nat simulated data (natural forcing only).}\label{fig:unnamed-chunk-8}
+\caption{Source: [https://www.science.org/doi/10.1126/sciadv.abo1638]. The distribution of PMF values across different grid cell pairs at varying latitudes. Solid lines represent the PMF of positively concurrent regions, dashed lines indicate negatively concurrent regions. Four scenarios: observation with/without trend, historical simulated data and hist-nat simulated data (natural forcing only).}\label{fig:unnamed-chunk-9}
 \end{figure}
 \vspace{1em}
 
@@ -897,7 +1818,7 @@ This study also investigated how spatial dependence responds to different thresh
 
 }
 
-\caption{Source: [https://www.science.org/doi/10.1126/sciadv.abo1638]. The proportion of land grid cell pairs where climate extremes exhibit significant positive (solid lines) or negative (dashed lines) dependence, assessed using probability thresholds ranging from 0.9/0.1 to 0.99/0.01, based on observational data from 1901 to 2020. (C,D) Corresponding results for (A,B), but depicting the mean probability multiplication factor (PMF) for positively (solid lines) and negatively (dashed lines) dependent climate extremes.}\label{fig:unnamed-chunk-9}
+\caption{Source: [https://www.science.org/doi/10.1126/sciadv.abo1638]. The proportion of land grid cell pairs where climate extremes exhibit significant positive (solid lines) or negative (dashed lines) dependence, assessed using probability thresholds ranging from 0.9/0.1 to 0.99/0.01, based on observational data from 1901 to 2020. (C,D) Corresponding results for (A,B), but depicting the mean probability multiplication factor (PMF) for positively (solid lines) and negatively (dashed lines) dependent climate extremes.}\label{fig:unnamed-chunk-10}
 \end{figure}
 \vspace{1em}
 
@@ -907,9 +1828,9 @@ This study also investigated how spatial dependence responds to different thresh
 
 \emph{Supervisor: }
 
-\section{Intro About the Seminar Topic}\label{intro-about-the-seminar-topic-4}
+\section{Intro About the Seminar Topic}\label{intro-about-the-seminar-topic-3}
 
-\section{Outline of the Booklet}\label{outline-of-the-booklet-4}
+\section{Outline of the Booklet}\label{outline-of-the-booklet-3}
 
 \chapter{Acknowledgements}\label{acknowledgements}
 
