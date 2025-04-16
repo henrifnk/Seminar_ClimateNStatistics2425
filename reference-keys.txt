@@ -120,8 +120,8 @@ elastic-net-regression
 ensemble-boosting
 data-and-methodology-of-ensemble-boosting
 results-and-discussion
-dynamical-adjustment
-ensemble-boosting-1
+results-from-dynamical-adjustment
+results-from-ensemble-boosting
 flood-frequency-analysis
 intro
 cops
