@@ -153,11 +153,12 @@ hypothesis-test
 probability-multiple-factor
 results-2
 sensitivity-test
+ipcc
 introduction-3
-introduction-4
 background
 climate-and-public-health
 related-literature
+theoretical-framework
 splines
 generalized-additive-models-gam
 gradient-boosting
