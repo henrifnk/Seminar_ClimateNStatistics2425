@@ -426,9 +426,12 @@ create_hydrograph = function(df){
     ) + 
     labs(x = "Day of the Year")
   
-  plts =  (hydro |events) + 
+  plts =  (hydro + ggtheme |events + ggtheme) + 
     plot_annotation(
-      title = paste("Hydrograph", unique(df$unit), unique(df$year))
+      # title = paste("Hydrograph Munich", unique(df$year)),
+      theme = theme(
+        plot.title = element_text(size = title_size, face = "bold")
+      )
     )
   
   return(plts)

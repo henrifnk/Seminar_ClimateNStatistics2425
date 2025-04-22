@@ -330,7 +330,7 @@ get_bavaria_plot = function(
     # 3) Add the shape of Bayern on top to highlight the relevant area
     geom_sf(data = bayern, fill = "white", alpha = 0.4, linewidth = .8) + 
     # 4) Add station
-    geom_sf(data = pos_sf, aes(color = river_station, shape = river_station, fill = river_station), size = 4) + 
+    geom_sf(data = pos_sf, aes(color = river_station, shape = river_station, fill = river_station), size = 4) +
     # Formatiing of Data
     theme_void() + 
     theme(
@@ -345,7 +345,7 @@ get_bavaria_plot = function(
       legend.box = "vertical",
       legend.margin = margin(1, 1, 1, 1),  # (top, right, bottom, left) padding
       legend.text = element_text(size = 20),  # Adjust size of legend labels
-      legend.title = element_text(size = 24, face = "bold")
+      legend.title = element_text(size = 24)
     ) + 
     # The color aes is actually what colors the rivers and stations, but the legend is super ugly
     # So I use the fill legend and do not display the color legend
@@ -374,14 +374,6 @@ get_bavaria_plot = function(
         ),
         order = 2
       )
-    ) + 
-    geom_sf(data = pos_sf |> dplyr::filter(unit == station), color = "black", size = 10, shape = 1, alpha = 1) + 
-    geom_sf_label(
-      data = pos_sf |> dplyr::filter(unit == station), 
-      aes(label = unit),
-      nudge_x = .8,
-      size = 10,
-      fill = "white"
     ) 
   )
   
@@ -398,8 +390,7 @@ get_bavaria_plot = function(
 
 get_hydrograph = function(df, save_plot = FALSE, plotname = "selected_hydrograph"){
   plot(
-    create_hydrograph(df) +
-       ggtheme
+    create_hydrograph(df)
     )
   if(save_plot) savegg(plotname)
 }
@@ -427,12 +418,13 @@ get_cor_plot= function(cor_table, save_plot = FALSE, plotname = "cor_plot"){
     geom_hline(yintercept = 0, linetype = 2) + 
     theme(legend.position = "none") + 
     labs(
+      # title = "Correlation across Stations",
       y = latex2exp::TeX("$ \\widehat{\\tau}$"),
       x = ""
     ) + 
+    ggtheme + 
     ylim(-0.12, 1) + 
-    facet_wrap(~river) + 
-      ggtheme
+    facet_wrap(~river) 
   )
   if(save_plot) savegg(plotname)
 }
@@ -558,10 +550,7 @@ visualGOF = function(
   ) + ggtheme
   
   plt = (cont_dur_peak | cont_peak_vol| cont_dur_vol) / 
-      (syn_dur_peak| syn_peak_vol| syn_dur_vol) + 
-    plot_annotation(
-      title = paste("Vine Copula Fit", station)
-    )
+      (syn_dur_peak| syn_peak_vol| syn_dur_vol) 
   plot(plt)
   if (save_plot) savegg(plotname)
 }
@@ -653,7 +642,7 @@ plot_bavaria_taildep = function(taildep_df, bavaria_params, considered = c("Isar
       legend.position = "bottom",  # Move legend to top-right
       legend.margin = margin(1, 1, 1, 1),  # (top, right, bottom, left) padding
       # legend.text = element_text(size = 20),  # Adjust size of legend labels
-      legend.title = element_text(size = 15, face = "bold"),
+      legend.title = element_text(size = 15),
       strip.text.x = element_text(size = 18)  # Adjust size of facet labels
     ) 
   
@@ -702,7 +691,7 @@ get_univariate_HQ_plot = function(scop_df, ref_flood, gev_peak, save_plot = FALS
     labs(
       x = latex2exp::TeX("Peak ($m^3/s$)"),
       y = "Density",
-      title = paste(scop_df$unit |> unique(), "station - GEV Fit on Peak")
+      # title = "Munich station - GEV Fit on Variable 'Peak'"
     ) + ggtheme
   )
   message(paste("MESSAGE: Estimated event probability:", round(1 - pmarginal(ref_flood$peak, gev_peak), 2)))
@@ -823,6 +812,8 @@ model_evaluation = function(cop_df, nacs, vines, hq_probs, grid_size = 25, save_
     ggplot() +
     geom_boxplot(aes(x = as.factor(HQ), y = std_discharge)) +
     geom_line(data = res, aes(x = as.factor(hq), y = std_discharge, group = unit, color = tau_order), alpha = 0.5) + 
+    theme(legend.position = "top") + 
+    ggtheme + 
     facet_grid(type~river) + 
       scale_color_manual(
         name = "Largest τ",  # legend title
@@ -946,7 +937,7 @@ get_most_probable_voldur_by_unit = function(station, scop_df, nac, vine, grid_si
       strip.text = element_text(size = 15)
     ) + 
     labs(
-      title = paste(station, "station - Most Likely Conditional Vol - Dur Pairs"),
+      # title = paste(station, "station - Most Likely Conditional Vol - Dur Pairs"),
       x = latex2exp::TeX("Volume (Mio. $m^3$)"),
       y = "Duration (days)"
     ) + 
@@ -1253,7 +1244,7 @@ get_most_probable_voldur = function(
       geom_point(data = data.frame(vol = initial_vol, dur = initial_dur, z = 0)) +
       geom_point(data = data.frame(vol = vol, dur = dur, z = 0), color = "red") + 
       theme(legend.position = "none") + 
-      labs(title = paste(station, mdl_type, 1/hq_prob))
+      # labs(title = paste(station, mdl_type, 1/hq_prob))
     plot(marginal_contours)
   }
   
@@ -1339,8 +1330,9 @@ get_cond_boxplots = function(save_plot = F, plotname = "data_condBoxplots"){
   plot(emp_hq_df |>
     ggplot() +
     geom_boxplot(aes(x = as.factor(HQ), y = std_discharge)) +
+    ggtheme + 
     facet_wrap(~river) + 
       labs(y = "Standardized Average Discharge", x = "Return Period")
-  ) + ggtheme
+  )
   if(save_plot) savegg(plotname)
 }

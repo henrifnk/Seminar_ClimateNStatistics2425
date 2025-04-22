@@ -378,8 +378,19 @@ get_nac_bias_in_vine_dgp = function(in_dir = "../data/simulation/", save_plot = 
     geom_line(aes(y = true_tau_13, x = x)) + 
     geom_line(aes(y = nac_tau_outer, x = x), color = "blue", alpha = 0.4) + 
     geom_line(aes(y = nac_tau_inner, x = x), color = "red", alpha = 0.4) + 
-    facet_grid(river ~ n, scale = "free_x") + 
-      ggtheme
+    labs(x = "Iteration", y = "Correlation") + 
+    scale_y_continuous(breaks = c(0, 0.5, 1), limits = c(0, 1)) + 
+    ggtheme + 
+    facet_grid(
+      river ~ n, 
+      scale = "free_x", 
+      labeller = labeller(
+        river = c(
+          "LowMedHigh"  = "LMH",
+          "LowHighHigh" = "LHH"
+          )
+        )
+      ) 
     )
   if (save_plot) savegg(plotname)
 }
