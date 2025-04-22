@@ -11,7 +11,7 @@ station = "München"
 # Reference year: The one year I consider in more detail
 ref_year = 2024
 # The bavaria plot takes quite some time to load.. Thus, control if it supposed to be loaded at all
-create_bavaria_plot = FALSE
+create_bavaria_plot = TRUE
 
 # Create Data Files (if necessary) ----------------------------------------
 if (create_datafiles) create_dfs(

@@ -45,10 +45,12 @@ n_syn = 1000
 
 
 # gg themes ---------------------------------------------------------------
+title_size = 24
 ggtheme = theme(
-  plot.title = element_text(size = 18, face = "bold"),
-  plot.subtitle = element_text(size = 14),
-  axis.title = element_text(size = 14),
-  axis.text = element_text(size = 12),
-  legend.text = element_text(size = 12)
+  plot.title = element_text(size = title_size),
+  axis.title = element_text(size = 18),
+  axis.text = element_text(size = 18),
+  legend.title = element_text(size = 18),
+  legend.text = element_text(size = 18),
+  strip.text = element_text(size = 14)  
 )
