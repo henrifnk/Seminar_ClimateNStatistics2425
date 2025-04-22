@@ -89,7 +89,7 @@ In the study of (@sippel2024), the CESM2-ETH large ensemble, spanning 900 winter
 -	**First-order boosting**: The coldest December during the 2020s in the CESM2-ETH ensemble was identified. This simulation was then perturbed and re-initialized for each day from December 1-15, generating 50 ensemble members per day. This resulted in a total of 750 simulations, capturing a well-constrained representation of early winter cold conditions.
 -	**Second-order boosting**: To further explore extreme cold persistence into January, the two coldest simulations from the first-order boosted set were selected. These were subsequently re-initialized daily from January 1-15, with 50 ensemble members per day, leading to 1500 additional simulations.
 
-```{r boosting-example, echo=FALSE, out.width='70%',fig.align='center', fig.cap= 'This figure (a) provides an illustrative example of model boosting, adapted from (@sippel2024)' }
+```{r boosting-example, echo=FALSE, out.width='70%',fig.align='center', fig.cap= 'This figure (a) provides an illustrative example of model boosting, adapted from Sippel et al. (2024)' }
 knitr::include_graphics("work/03-coldex/figures/boosting_original.png")
 ```
 
@@ -122,12 +122,12 @@ This raises a critical uncertainty, as discussed in (@sippel2024): whether the c
 ### Results from Ensemble Boosting
 The three coldest storylines, in terms of both minimum temperature and average temperature, were analyzed for ensemble members 23 and 48 from the first-order boosted simulations.
 
-```{r boosting-result23, echo=FALSE, out.width='90%', fig.align='center', fig.cap='The three coldest storylines (based on minimum and average temperature) are derived from ensemble member 23. The data are extracted from the file BSSP370cmip6.0230013.zip, provided by (@sippel2024)'}
+```{r boosting-result23, echo=FALSE, out.width='90%', fig.align='center', fig.cap='The three coldest storylines (based on minimum and average temperature) are derived from ensemble member 23. The data are extracted from the file BSSP370cmip6.0230013.zip, provided by Sippel et al. (2024)'}
 knitr::include_graphics("work/03-coldex/figures/boosting_results23.png")
 ```
 For ensemble member 23, the lowest recorded temperatures in the second-order boosted simulations reached a minimum temperature of -26.3°C, while the average temperature over the winter period from January to March was -12.1°C. Figure \@ref(fig:boosting-result23) illustrates the three coldest minimum temperature storylines in the left panel and the three coldest average temperature storylines in the right panel. The ensemble members associated with these extreme conditions-ens010, ens040, and ens042 for minimum temperature, and ens037, ens039, and ens047 for average temperature—exhibit pronounced cold events, highlighting the capacity of the boosting technique to explore the statistical tail of extreme winter conditions.
 
-```{r boosting-result48, echo=FALSE, out.width='90%', fig.align='center', fig.cap='The three coldest storylines (based on minimum and average temperature) are derived from ensemble member 48. The data are extracted from the file BSSP370cmip6.0480013.zip, provided by (@sippel2024)' }
+```{r boosting-result48, echo=FALSE, out.width='90%', fig.align='center', fig.cap='The three coldest storylines (based on minimum and average temperature) are derived from ensemble member 48. The data are extracted from the file BSSP370cmip6.0480013.zip, provided by Sippel et al. (2024)' }
 knitr::include_graphics("work/03-coldex/figures/boosting_results48.png")
 ```
 For ensemble member 48, the coldest recorded temperatures in the second-order boosted simulations included a minimum temperature of -25.9°C, which consistently occurred at the start of the initialization, and an average temperature of -10.2°C over the winter period from January to March (Fig.\@ref(fig:boosting-result48)). The fact that the lowest minimum temperatures always appeared at the beginning of the initialization phase suggests potential influences of edge conditions, temporal dependencies, or initialization bias. To address these factors, early January was excluded from the analysis. When focusing on mid-to-late winter, the lowest minimum temperature was observed in simulation ens037, reaching -23.1°C.
