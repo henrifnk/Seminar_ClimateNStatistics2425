@@ -171,8 +171,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="flood-frequency-analysis.html"><a href="flood-frequency-analysis.html#abstract-3"><i class="fa fa-check"></i>Abstract</a></li>
 <li class="chapter" data-level="4.1" data-path="flood-frequency-analysis.html"><a href="flood-frequency-analysis.html#intro"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
-<li class="chapter" data-level="4.2" data-path="sm.html"><a href="sm.html#data"><i class="fa fa-check"></i><b>4.2</b> Data</a></li>
-<li class="chapter" data-level="4.3" data-path="ce.html"><a href="ce.html#methods"><i class="fa fa-check"></i><b>4.3</b> Methods</a>
+<li class="chapter" data-level="4.2" data-path="flood-frequency-analysis.html"><a href="flood-frequency-analysis.html#data_ff"><i class="fa fa-check"></i><b>4.2</b> Data</a></li>
+<li class="chapter" data-level="4.3" data-path="flood-frequency-analysis.html"><a href="flood-frequency-analysis.html#methods_ff"><i class="fa fa-check"></i><b>4.3</b> Methods</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="flood-frequency-analysis.html"><a href="flood-frequency-analysis.html#cops"><i class="fa fa-check"></i><b>4.3.1</b> Copulas</a></li>
 <li class="chapter" data-level="4.3.2" data-path="flood-frequency-analysis.html"><a href="flood-frequency-analysis.html#sklarstheorem"><i class="fa fa-check"></i><b>4.3.2</b> Sklar’s Theorem</a></li>
@@ -322,14 +322,14 @@ The present thesis addresses three main research questions:
 (3) How does the interpretation of return periods differ when using univariate versus multivariate approaches?
 By addressing these questions, this work aims to contribute to a more nuanced understanding of flood risk, ultimately improving predictive accuracy and informing better flood management strategies in Bavaria.</p>
 </div>
-<div id="data" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Data<a href="sm.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data_ff" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Data<a href="flood-frequency-analysis.html#data_ff" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span> used the variables peak, volume and duration
 of the most severe flood event within a year.
 These variables are derivable from yearly hydrological discharge data.
 The discharge data we use during our analysis
 is provided by the
-Bavarian Environmental Agency’s hydrological service (GKD) (<span class="citation">(GKD) (<a href="#ref-gkd2025">2025</a>)</span>) which
+Bavarian Environmental Agency’s hydrological service (<span class="citation">(GKD) (<a href="#ref-gkd2025">2025</a>)</span>) which
 is data from multiple measurement station along the Isar and the Danube.
 Based on this, the following
 gives a brief description of the data,
@@ -339,14 +339,14 @@ ends with a display of the crucial aspects of the obtained data.</p>
 After removing stations with too little observations,
 the data contains discharge values in <span class="math inline">\(15\)</span> minute steps for
 <span class="math inline">\(21\)</span> stations along the Isar and Danube from different starting time points, but always up to 31.12.2024.
-Of these stations, <span class="math inline">\(12\)</span> are along the Isar and <span class="math inline">\(9\)</span> along the Danube where every station had at least <span class="math inline">\(44\)</span> years of observation.
+Of these stations, <span class="math inline">\(12\)</span> are along the Isar and <span class="math inline">\(9\)</span> along the Danube where every station had at least <span class="math inline">\(44\)</span> years of observations.
 As seen towards the end of this section, the alpine river Isar and the low-lying Danube have contrasting
 hydrological characteristics, enabling a meaningful comparison of flood dynamics in Bavaria.
 The exact spatial distribution of the considered station displayed plot <a href="flood-frequency-analysis.html#fig:bavaria">4.1</a>.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:bavaria"></span>
-<img src="work/04-floodfreq/figures/data_bavaria_plot.png" alt="The location of the selected measurement stations for the Isar and the Danube in Bavaria, Germany." width="100%" />
+<img src="work/04-floodfreq/figures/data_bavaria_plot.png" alt="The location of the selected measurement stations for the Isar and the Danube in Bavaria." width="70%" />
 <p class="caption">
-FIGURE 4.1: The location of the selected measurement stations for the Isar and the Danube in Bavaria, Germany.
+FIGURE 4.1: The location of the selected measurement stations for the Isar and the Danube in Bavaria.
 </p>
 </div>
 Given the annual discharge data for all these stations, we require to identify the
@@ -360,52 +360,50 @@ particularly, they tend to overestimate flood duration.
 Instead, we applied
 the baseflow methods proposed and implemented by <span class="citation">Wasko and Guo (<a href="#ref-wasko2025">2025</a>)</span>.
 This method relies on the baseflow index (BFI) which is the ratio of the baseflow volume to the volume of streamflow.
-<!-- Calculte BFI at each time step and extracts discrete flood events when the BFI falls below the specified threshold for a user-specified minimum duration. -->
 A default BFI threshold of 0.5 was used to distinguish events dominated by rapid runoff contributions typically associated with rainfall- or melt-induced flooding.
 Exemplary, figure <a href="flood-frequency-analysis.html#fig:hydro">4.2</a> shows the hydrograph for the station in Munich in 2024.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:hydro"></span>
-<img src="work/04-floodfreq/figures/data_hydrograph.png" alt="An exemplary hydrograph of the Munich station in 2024 (left) with the applied flood detection method result (right)." width="100%" />
+<img src="work/04-floodfreq/figures/data_hydrograph.png" alt="An exemplary hydrograph of the Munich station in 2024 (left) with the applied flood detection method (right)." width="70%" />
 <p class="caption">
-FIGURE 4.2: An exemplary hydrograph of the Munich station in 2024 (left) with the applied flood detection method result (right).
+FIGURE 4.2: An exemplary hydrograph of the Munich station in 2024 (left) with the applied flood detection method (right).
 </p>
 </div>
-<p>Both subplots in the figure display the same hydrograph, but the right describes the identification of the most
-severe flood. First, all flood events are selected. Then, the flood with the largest peak identified. The
+Both subplots in the figure display the same hydrograph, but the right describes the identification of the most
+severe flood. First, all flood events are selected. Then, the flood with the largest peak is identified. The
 flood duration is based on the previously described process.
 Finally, the
 variables of interest are determined. That is,
 flood peak is the maximum discharge value occurring within the event,
 flood duration is the time span measured in days between the start and end of the event, as determined by the BFI threshold crossings.
 Flood volume is the cumulative streamflow over the flood duration, representing total discharge volume in <span class="math inline">\(m^3\)</span>.
-These are neatly displayed on the left subplot.</p>
-<p>Now, we come to the most crucial aspect in our data and show that this structure is also found in <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span>. That is, fig <a href="flood-frequency-analysis.html#fig:corplot">4.3</a> displays the rank correlation coefficient Kendall’s <span class="math inline">\(\tau\)</span>
-of every possible combination between the <span class="math inline">\(3\)</span> variables separated by river.</p>
+These are neatly displayed on the left subplot.<br />
+Now, we come to the most crucial aspect in our data and show that this structure is also found in <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span>. That is, fig <a href="flood-frequency-analysis.html#fig:corplot">4.3</a> displays the rank correlation coefficient Kendall’s <span class="math inline">\(\tau\)</span>
+of every possible combination between the <span class="math inline">\(3\)</span> variables separated by river.<br />
+
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:corplot"></span>
-<img src="work/04-floodfreq/figures/data_cor_plot.png" alt="The Kendall’s tau coefficients for the three dependency structures of volume, duration and peak for the Isar and the Danube. Black dots mark the respective results found in Grimaldi (2006)." width="100%" />
+<img src="work/04-floodfreq/figures/data_cor_plot.png" alt="The Kendall’s tau coefficients for the three dependency structures of volume, duration and peak for the Isar and the Danube. Black dots mark the respective results found in Grimaldi (2006)." width="70%" />
 <p class="caption">
 FIGURE 4.3: The Kendall’s tau coefficients for the three dependency structures of volume, duration and peak for the Isar and the Danube. Black dots mark the respective results found in Grimaldi (2006).
 </p>
 </div>
-<p>The boxplots in figure <a href="flood-frequency-analysis.html#fig:corplot">4.3</a>
+The boxplots in figure <a href="flood-frequency-analysis.html#fig:corplot">4.3</a>
 are based on the <span class="math inline">\(9\)</span> and <span class="math inline">\(12\)</span> stations along each river, respectively, and
 depict the <span class="math inline">\(\tau\)</span> values for the corresponding variable combination seen on the <span class="math inline">\(x\)</span>-Axis.
 The black dots refer to the <span class="math inline">\(\tau\)</span> values observed by <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span>.
 Most important here is that none of the boxplots align horizontally. That is, the strength of dependence
 differs between all pairs of variables.
-Thereby, our data suggests <span class="math inline">\(3\)</span> different distinct dependencies.
+Thereby, our data suggests <span class="math inline">\(3\)</span> distinct dependencies.
 This finding is most crucial and, as we will see later on, renders <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span> approach infeasible. Because, as seen from the black dots, not only our data suggest <span class="math inline">\(3\)</span> separate dependence structures, but also the river <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span> considered.<br />
 Also interesting is the exact order of correlation values by each river.
-<!-- difference between the rivers in what variables have the strongest dependence.  -->
 For both rivers, duration and peak always had the lowest correlation value.
 For the Danube,
 volume and duration are always the variables with the highest correlation with an exception of only one station.
-Nevertheless, all these values are quite similar as seen from the width of the boxplot in figure <a href="#corplot"><strong>??</strong></a>.
+Nevertheless, all these values are quite similar as seen from the width of the boxplot in figure <a href="flood-frequency-analysis.html#fig:corplot">4.3</a>.
 For the Isar, on the other hand, we observe not only more variation in the correlation
 values, but here the most correlated pair tends to be volume and peak. Of the <span class="math inline">\(12\)</span> stations, <span class="math inline">\(8\)</span>
-had volume and peak to be the pair with the highest correlation.<br />
+had volume and peak to be the pair with the highest correlation.
 This emphazises the aforementioned contrasting
-hydrological characteristics which are highly relevant for copula modelling and, thereby, for our analysis.
-<!-- Mention: Isar has similar correlation structure as in paper --></p>
+hydrological characteristics which are highly relevant for copula modelling and, thereby, for our analysis.<br />
 Finally, the analysis section utilizes return periods of flood peaks to derive
 average discharge values conditioned on a certain peak.
 To ensure these are
@@ -416,7 +414,7 @@ return periods <span class="math inline">\(2, 5, 10, 20\)</span> and <span class
 Thereby, we obtained <span class="math inline">\(21\)</span> average discharge values for each return period.
 Consider figure <a href="flood-frequency-analysis.html#fig:condEmpBoxplots">4.4</a> for a visualization.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:condEmpBoxplots"></span>
-<img src="work/04-floodfreq/figures/data_condBoxplots.png" alt="The standardizes average discharge values by peak quantiles of the GKD data."  />
+<img src="work/04-floodfreq/figures/data_condBoxplots.png" alt="The standardizes average discharge values by peak quantiles of the GKD data." width="70%" />
 <p class="caption">
 FIGURE 4.4: The standardizes average discharge values by peak quantiles of the GKD data.
 </p>
@@ -424,17 +422,17 @@ FIGURE 4.4: The standardizes average discharge values by peak quantiles of the G
 <p>First of all, note that the average discharge values are on the
 y-axis ranging from <span class="math inline">\(-1\)</span> to <span class="math inline">\(5\)</span>. This is due to the
 standardization process within each station. The x-axis denotes the
-return periods of the peak based on the quantile approach.
+return periods of the peak.
 To account for the different structure between rivers, the figure considers them separately.
 Thereby, each boxplot in the Danube column is based on <span class="math inline">\(9\)</span> data points and <span class="math inline">\(12\)</span> for the Isar where each data
-point corresponds to a station.</p>
-<p>For both subplots, the average discharge increases with an increase in the return period.
+point corresponds to a station.<br />
+For both subplots, the average discharge increases with an increase in the return period.
 However, while the subplot of the Danube suggests a moderate increase in average discharge values,
 the Isar has a stark increase. But by the size of the boxplot at return period <span class="math inline">\(50\)</span>, this increase does not
 hold for all stations.</p>
 </div>
-<div id="methods" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Methods<a href="ce.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="methods_ff" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Methods<a href="flood-frequency-analysis.html#methods_ff" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To address the dependence structures identified in the previous section,
 this chapter
 extends the approach of <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span> by incorporating vine copulas.
@@ -455,28 +453,22 @@ To give a mathematical definition, consider the vector
 <span class="math inline">\(u = (u_1, ..., u_d) \in \mathbb{R}^d\)</span> where <span class="math inline">\(u_j \in [0, 1]\)</span> for
 <span class="math inline">\(j = 1, .., d\)</span>. Then, a <span class="math inline">\(d\)</span> dimensional copula is defined by
 <span class="citation">Durante and Sempi (<a href="#ref-durante2016">2016</a>)</span> (p. 14) as function <span class="math inline">\(C:[0,1]^d\to [0,1]\)</span> if, and only if,
-the following conditions hold:</p>
-<ol style="list-style-type: lower-roman">
-<li><p><span class="math inline">\(C(u_1, ..., u_d) = 0\)</span> if <span class="math inline">\(u_j = 0\)</span> for at least one
-<span class="math inline">\(j \in \{1,…,d\}\)</span>.</p></li>
-<li><p><span class="math inline">\(C(1, 1, ..., 1, u_j, 1, ..., 1) = u_j\)</span></p></li>
-<li><p><span class="math inline">\(C\)</span> is <span class="math inline">\(d\)</span>-increasing</p></li>
-</ol>
-<!-- The first two conditions make up the boundary conditions of a $d$ -->
-<!-- copula. This notion is due to the fact the conditions use the least and -->
-<!-- the greatest element in the domain of the copula, respectively (see -->
-<!-- @nelsen2006, p. 9). -->
-<p>According to <span class="citation">Nelsen (<a href="#ref-nelsen2006">2006</a>)</span> (p. 9), condition i. shows that copulas
+the following conditions hold:<br />
+i) <span class="math inline">\(C(u_1, ..., u_d) = 0\)</span> if <span class="math inline">\(u_j = 0\)</span> for at least one
+<span class="math inline">\(j \in \{1,…,d\}\)</span>.<br />
+ii) <span class="math inline">\(C(1, 1, ..., 1, u_j, 1, ..., 1) = u_j\)</span>.<br />
+iii) <span class="math inline">\(C\)</span> is <span class="math inline">\(d\)</span>-increasing.<br />
+According to <span class="citation">Nelsen (<a href="#ref-nelsen2006">2006</a>)</span> (p. 9), condition i) shows that copulas
 are grounded. In this context, grounded means that
 plugging in <span class="math inline">\(0\)</span> for just one of the variables yields a copula value of <span class="math inline">\(0\)</span>, independent of the
 other variables’ value.
-The author also mentions that, using condition ii., the margins of the function <span class="math inline">\(C\)</span> with respect to a certain variables are obtained by
+The author also mentions that, using condition ii), the margins of the function <span class="math inline">\(C\)</span> with respect to a certain variable are obtained by
 plugging in <span class="math inline">\(1\)</span> for all other variables.
 Finally, the condition of <span class="math inline">\(C\)</span> to be <span class="math inline">\(d\)</span>-increasing is cumbersome to map out in
 higher dimensions, which is why the following is restricted to the <span class="math inline">\(d = 2\)</span> case.
 According to <span class="citation">Nelsen (<a href="#ref-nelsen2006">2006</a>)</span> (p. 8), the copula function <span class="math inline">\(C\)</span> is
 <span class="math inline">\(2\)</span>-increasing if for all <span class="math inline">\(u_1, u_2, v_1, v_2 \in [0,1]\)</span> with
-<span class="math inline">\(u_1 \leq u_2\)</span> and <span class="math inline">\(v_1 \leq v_2\)</span>:
+<span class="math inline">\(u_1 \leq u_2\)</span> and <span class="math inline">\(v_1 \leq v_2\)</span>:<br />
 <span class="math display" id="eq:twoincreasing">\[
 C(u_2, v_2) - C(u_2, v_1) - C(u_1, v_2) + C(u_1, v_1) \geq 0
 \tag{4.1}
@@ -484,9 +476,6 @@ C(u_2, v_2) - C(u_2, v_1) - C(u_1, v_2) + C(u_1, v_1) \geq 0
 Simply put, 2-increasing means that the volume under the copula density
 function over the rectangle <span class="math inline">\([u_1, u_2] \times [v_1, v_2]\)</span> is
 non-negative. This interpretation follows from the fact that copula functions are defined as CDF and holds for higher dimensions, too.<br />
-<!-- Based on condition i. and iii., @nelsen2006 (p. 9) also concludes that to  -->
-<!-- the copula function $C$ is nondecreasing in -->
-<!-- each argument. \ -->
 The next section introduces the central theorem in copula theory and also derives the already mentioned copula density.</p>
 </div>
 <div id="sklarstheorem" class="section level3 hasAnchor" number="4.3.2">
@@ -498,7 +487,7 @@ to separate the representation of the dependence structure and marginal
 distribution functions. The theorem is given by <span class="citation">Nelsen (<a href="#ref-nelsen2006">2006</a>)</span> (p. 18):<br />
 Let <span class="math inline">\(F_{1,..,d}\)</span> be a <span class="math inline">\(d\)</span>-dimensional joint distribution function with
 univariate margins <span class="math inline">\(F_1, ..., F_d\)</span>. Then, there exists a <span class="math inline">\(d\)</span>-dimensional
-copula <span class="math inline">\(C\)</span> such that
+copula <span class="math inline">\(C\)</span> such that<br />
 <span class="math display" id="eq:sklar">\[
 F_{1, ..., d}(x_1, ..., x_d)  = C(F_1(x_1), ..., F_d(x_d)) = C(u_1, ..., u_d)
 \tag{4.2}
@@ -512,16 +501,16 @@ its margins which allows to separately consider marginal and
 joint behavior of variables. That is, the problem of determining any
 multivariate CDF is reduced to determining the copula. And two, the
 marginal distributions do not need to be of the same family because
-Sklar’s theorem holds regardless.</p>
-<p>The aforementioned copula density function is given by (see
-<span class="citation">L. Zhang and Singh (<a href="#ref-zhang2019">2019</a>)</span>, p. 66):
+Sklar’s theorem holds regardless.<br />
+The aforementioned copula density function is given by (see
+<span class="citation">L. Zhang and Singh (<a href="#ref-zhang2019">2019</a>)</span>, p. 66):<br />
 <span class="math display" id="eq:copulapdf">\[
 c(u_1, ..., u_d) = \frac{\partial C(u_1, ..., u_d)}{\partial u_1 ... \partial u_d} = \frac{f(x_1, ..., x_d)}{\Pi_{i = 1}^df_i(x_i)}
 \tag{4.3}
 \]</span>
 where <span class="math inline">\(f(x_1, ..., x_d)\)</span> denotes the joint density of <span class="math inline">\(X_1, ..., X_d\)</span>
 and <span class="math inline">\(f_i(x_i)\)</span> the marginal density of <span class="math inline">\(X_i\)</span> for
-<span class="math inline">\(i = 1, ..., d\)</span>. Based on this equation, the joint density in terms of the copula density is given by
+<span class="math inline">\(i = 1, ..., d\)</span>. Based on this equation, the joint density in terms of the copula density is given by<br />
 <span class="math display" id="eq:marginalpdf">\[
 f(x_1, ..., x_d) = c(u_1, ..., u_d)\Pi_{i = 1}^df_i(x_i)
 \tag{4.4}
@@ -549,15 +538,15 @@ We only apply strict generators as seen towards the end of this section.<br />
 For a generator to yield a valid <span class="math inline">\(d\)</span>-dimensional copula,
 <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span> and <span class="citation">L. Zhang and Singh (<a href="#ref-zhang2019">2019</a>)</span> (p. 124) mention that the inverse
 requires to be completely monotone which is given if it has
-derivatives of all orders with alternating sign
+derivatives of all orders with alternating sign<br />
 <span class="math display" id="eq:changingsign">\[
 (-1)^k \frac{d^k \phi^{-1}(t|\theta)}{dt^k} \geq 0.
 \tag{4.5}
 \]</span>
 Now, we are in the position to formulate the general representation of a
-<span class="math inline">\(d\)</span>-dimensional SAC in terms of its generator.
+<span class="math inline">\(3\)</span>-dimensional SAC in terms of its generator.
 The relation is given by
-<span class="citation">L. Zhang and Singh (<a href="#ref-zhang2019">2019</a>)</span> (p. 123) as
+<span class="citation">L. Zhang and Singh (<a href="#ref-zhang2019">2019</a>)</span> (p. 123) as<br />
 <span class="math display" id="eq:generatorSAC">\[
 C(u_1, u_2, u_3 \mid \theta) = \phi^{-1} \left( \phi(u_1 \mid \theta) + \phi(u_2 \mid \theta) + \phi(u_3 \mid \theta) \,\middle|\, \theta \right).
 \tag{4.6}
@@ -575,18 +564,13 @@ This parameter vector takes on an important role in fitting a copula to observed
 That is, for an assumed copula family, this parameter vector remains to be estimated from the data.
 The exact approach is further discussed in section <a href="flood-frequency-analysis.html#est">4.3.7</a>.
 For now, note that we focus on the <span class="math inline">\(3\)</span> generator functions with a one-dimensional <span class="math inline">\(\theta\)</span> vector.
-These are specified in table <a href="flood-frequency-analysis.html#tab:generators">4.1</a>.<br />
-Finally, equation <a href="flood-frequency-analysis.html#eq:generatorSAC">(4.6)</a> shows that the arguments
-to the SAC are exchangeable (see <span class="citation">Nelsen (<a href="#ref-nelsen2006">2006</a>)</span> (p. 38)).
-Exchangeability is a form of symmetry and implies that the copula treats
-all its arguments the same.
-Thereby, this representation displays the aforementioned restriction of SACs being able to only depict one unique dependence structure.</p>
-<table style="width:100%;">
+These are specified in table <a href="flood-frequency-analysis.html#tab:generators">4.1</a>.</p>
+<table>
 <caption><span id="tab:generators">TABLE 4.1: </span> Generator functions of selected Archimedean copulas according to <span class="citation">L. Zhang and Singh (<a href="#ref-zhang2019">2019</a>)</span> (p. 130) and tail dependencies according to <span class="citation">L. Zhang and Singh (<a href="#ref-zhang2019">2019</a>)</span> (p. 132).</caption>
 <colgroup>
-<col width="24%" />
-<col width="27%" />
-<col width="31%" />
+<col width="25%" />
+<col width="28%" />
+<col width="28%" />
 <col width="16%" />
 </colgroup>
 <thead>
@@ -618,20 +602,25 @@ Thereby, this representation displays the aforementioned restriction of SACs bei
 </tr>
 </tbody>
 </table>
+<p>Finally, equation <a href="flood-frequency-analysis.html#eq:generatorSAC">(4.6)</a> shows that the arguments
+to the SAC are exchangeable (see <span class="citation">Nelsen (<a href="#ref-nelsen2006">2006</a>)</span> (p. 38)).
+Exchangeability is a form of symmetry and implies that the copula treats
+all its arguments the same.
+Thereby, this representation displays the aforementioned restriction of SACs being able to only depict one unique dependence structure.</p>
 </div>
 <div id="taildep" class="section level3 hasAnchor" number="4.3.4">
 <h3><span class="header-section-number">4.3.4</span> Taildependence and Rotation<a href="flood-frequency-analysis.html#taildep" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>After explaining what it means for a copula to be of a certain family,
 the following introduces the family specific concept of tail dependence.
-Also, we briefly explain how copulas are manipulated to extend the dependence possible structure one family
+Also, we briefly explain how copulas are manipulated to extend the possible dependence structure one family
 captures.</p>
 <p>Tail dependence is differentiated into upper and lower tail dependence.
-Their formulas are given by <span class="citation">Czado (<a href="#ref-czado2019">2019</a>)</span> (p. 34 - 35) as</p>
-<p><span class="math display" id="eq:uppertaildep">\[
+Their formulas are given by <span class="citation">Czado (<a href="#ref-czado2019">2019</a>)</span> (p. 34 - 35) as<br />
+<span class="math display" id="eq:uppertaildep">\[
 \lambda^{\text{upper}} = \lim_{t \to 1^{-}} \mathbb{P}\left( X_2 &gt; F_2^{-1}(t) \,\middle|\, X_1 &gt; F_1^{-1}(t) \right) = \lim_{t \to 1^{-}} \frac{1 - 2t + C(t, t|\theta)}{1 - t}
 \tag{4.7}
 \]</span>
-and
+and<br />
 <span class="math display" id="eq:lowertaildep">\[
 \lambda^{\text{lower}} = \lim_{t \to 0^{+}} \mathbb{P}\left( X_2 \leq F_2^{-1}(t) \,\middle|\, X_1 \leq F_1^{-1}(t) \right)
 = \lim_{t \to 0^{+}} \frac{C(t, t|\theta)}{t}.
@@ -639,7 +628,6 @@ and
 \]</span>
 As seen from both equations, tail dependence is defined as conditional probability that both variables are above
 or below a threshold quantile.
-<!-- a probabilistic statement in its limits. -->
 Thereby, tail dependence
 measures how likely it is for both random variables to jointly exhibit extreme behavior.
 However, upper tail dependence refers to both variables attaining large values while lower tail dependence means
@@ -655,8 +643,7 @@ direction. This approach is based on the definition of the copula function as mu
 Because if instead of <span class="math inline">\(u_i\)</span> the transformation <span class="math inline">\(u_i&#39;\)</span> is modelled,
 the probabilistic statement of the copula in the continuous case changes to
 <span class="math inline">\(C(u_1&#39;, u_2|\theta) =  \mathbb{P}(X_1 \geq x_1,X_2 \leq x_2)\)</span> and
-<span class="math inline">\(C(u_1, u_2&#39;|\theta) =  \mathbb{P}(X_1 \leq x_1,X_2 \geq x_2)\)</span>
-, respectively.</p>
+<span class="math inline">\(C(u_1, u_2&#39;|\theta) =  \mathbb{P}(X_1 \leq x_1,X_2 \geq x_2)\)</span>, respectively.</p>
 </div>
 <div id="nacs" class="section level3 hasAnchor" number="4.3.5">
 <h3><span class="header-section-number">4.3.5</span> Fully Nested Archimedean copulas<a href="flood-frequency-analysis.html#nacs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -665,8 +652,8 @@ and partially alleviate their restrictions.
 Note that these are the models <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span> made extensive use of.<br />
 As our analysis applies to the trivariate case, FNACs and vines in section <a href="flood-frequency-analysis.html#vines">4.3.6</a> are introduced
 for this trivariate case only.</p>
-<p>FNACs are built by nesting bivariate SACs
-<span class="math display" id="eq:defgFNAC" id="eq:defFNAC">\[
+<p>FNACs are built by nesting bivariate SACs<br />
+<span class="math display" id="eq:defFNAC">\[
 C(u_1, u_2, u_3 \mid \theta) = C_1\left( C_2(u_1, u_2 \mid \theta_2), u_3 \mid \theta_1 \right),
 \tag{4.9}
 \]</span>
@@ -681,7 +668,7 @@ prevails.
 And second, the nested variables <span class="math inline">\(u_1, u_2\)</span> have the same marginal relation with <span class="math inline">\(u_3\)</span>.
 That is, <span class="math inline">\(C(a, 1, u_3|\theta) = C(1, a, u_3 | \theta) = C_1(a, u_3|\theta_1)\)</span>.
 In essence, the statements are equivalent but the important take away is that FNACs are not
-able to display <span class="math inline">\(3\)</span> distinct dependence structures. Thereby, they are not suitable for analysis.
+able to display <span class="math inline">\(3\)</span> distinct dependence structures. Thereby, they are not suitable for our analysis.
 As also <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span> observed <span class="math inline">\(3\)</span> distinct correlations, their results are questionable for the same reason.<br />
 Additionally to this restriction, <span class="citation">Górecki, Hofert, and Holeňa (<a href="#ref-hofert2016">2016</a>)</span> mention that FNACs
 require the sufficient nesting condition to be fulfilled for equation <a href="flood-frequency-analysis.html#eq:defFNAC">(4.9)</a> to yield a valid copula.
@@ -689,55 +676,10 @@ We limit our considerations to FNACs where all nested copulas are of the same fa
 This corresponds to what <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span> used in their analysis.
 Then, the sufficient nesting condition is fulfilled if
 deeper nested variables have a stronger degree of dependence, i.e. <span class="math inline">\(\theta_1 \leq \theta_{2}\)</span>.
-(see <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span>).
-<!-- As mentioned by @embrecht2003 (p. 375), the number of distinct -->
-<!-- generators or bivariate copulas, respectively, is only $d-1$ while the -->
-<!-- number of all possible pairs for $d$ variables is $\frac{d(d-1)}{2}$. -->
-<!-- That is, FNACs only model $d-1$ distinct dependence structures.  -->
-<!-- This -->
-<!-- implies that FNACs do not consider the dependence structure for every -->
-<!-- possible pair of the $d$ variables, but between a variable and a joint -->
-<!-- distribution (SOURCE FOR THIS? I know I read this somewhere, but it is -->
-<!-- also visible from the formula...). In fact, only for $u_1$ and $u_2$ the -->
-<!-- direct dependence structure is considered.\ -->
-<!-- Thereby, exchangeability is lost, but partial exchangeability remains -->
-<!-- because within the bivariate nested copulas, the two arguments are -->
-<!-- interchangeable (see @embrecht2003 p. 375). So to a degree, symmetry -->
-<!-- prefails.\ -->
-<!-- Finally, equation ref:gFNAC simplifies to ref:generatorsSAC for -->
-<!-- $\phi_1 = ... = \phi_{d-1}$ and $\theta_1 = ... = \theta_{d-1}$, as -->
-<!-- mentioned by @zhang2019 (p. 175). Thus, SACs are a special case of -->
-<!-- FNACs. --></p>
-<!-- Since we focus on trivariate copulas, we also formulate the FNAC -->
-<!-- representation for $d = 3$ in terms of $C$: $$ -->
-<!-- C(u_1, u_2, u_3) = C_1(u_3, C_2(u_1, u_2)) -->
-<!-- $$ -->
-<!-- -   @grimaldi2004 notes that we have identical margins for $u_3$ and -->
-<!--     $u_1$ bzw. $u_2$ with $\phi_1^{[-1]}(\phi_1(u_3) + \phi(u_j))$. As -->
-<!--     mentioned above, this is due to the partial exchangeability. -->
-<p>Note that equation <a href="flood-frequency-analysis.html#eq:defFNAC">(4.9)</a> may also be represented in terms of the generator function. Thereby, additional requirements
+(see <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span>).<br />
+Note that equation <a href="flood-frequency-analysis.html#eq:defFNAC">(4.9)</a> may also be represented in terms of the generator function. Thereby, additional requirements
 regarding the composition of generator functions emerge, as mentioned by <span class="citation">L. Zhang and Singh (<a href="#ref-zhang2019">2019</a>)</span> (p. 174).
 However, discussing these requirements is beyond the purpose of this paper. The interested reader is refered to <span class="citation">L. Zhang and Singh (<a href="#ref-zhang2019">2019</a>)</span> (p. 174).</p>
-<!-- @zhang2019 (p. 174) give -->
-<!-- the $d$-dimensional representation in terms of the generator  -->
-<!-- $$ -->
-<!-- \phi^{[-1]}_1 \left(  \phi_1 \circ \phi_2^{[-1]} \left( \phi_2 \circ ... \circ \phi^{[-1]}_{d-1}\left(\phi_{d-1}(u_1) + \phi_{d-1}(u_2)\right) + \phi_2(u_{d-1})  \right) + \phi_1(u_d) \right)\\ -->
-<!-- \tag{4.10}  -->
-<!-- $$ -->
-<!-- where $\circ$ represents the composition of functions. -->
-<!-- @zhang2019 (p. 174) mentions that due to the nesting of generators, $2$ -->
-<!-- additional condition arise. First, $\phi_1^{-1}, ..., \phi^{-1}_{d-1}$ -->
-<!-- are required to be completely monotonic and, second, the composition of -->
-<!-- functions $\omega_j = \phi_j \circ \phi_{j+1}$ belongs to the function -->
-<!-- class $\mathit{L}^*_\infty$ defined as $$ -->
-<!-- \mathit{L}^*_\infty = \left\{ \omega:[0, \infty)\to [0, \infty)\ |\ \omega(0) = 0,\ \omega(\infty) = \infty,\ (-1)^{k-1}\frac{d^k\omega(t)}{dt^k} \geq 0; k = 1,...,\infty   \right\} -->
-<!-- $$  -->
-<!-- Equation ref:eq:gFNAC shows that FNACs allow different generator -->
-<!-- functions $\phi_1,  ..., \phi_{d-1}$ where each has its own parameter -->
-<!-- $\theta_1, ..., \theta_{d-1}$. In other words, every nested copula $j$ -->
-<!-- is able to have its own varying dependence structure via $\phi_j$ and -->
-<!-- varying strength of dependence via $\theta_j$ which equation -->
-<!-- ref:eq:cFNAC displays.\ -->
 </div>
 <div id="vines" class="section level3 hasAnchor" number="4.3.6">
 <h3><span class="header-section-number">4.3.6</span> Vine Copulas<a href="flood-frequency-analysis.html#vines" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -746,13 +688,13 @@ multivariate dependence structures.
 That is, PCC decomposes multivariate densities into products of (conditional) bivariate densities (see <span class="citation">Czado (<a href="#ref-czado2019">2019</a>)</span> p. 88).<br />
 There exist multiple vine copula classes, depending on the structure the PCC implies, but as we are concerned with the trivariate case,
 these constructions are equivalent.</p>
-<p>We use <span class="citation">Czado (<a href="#ref-czado2019">2019</a>)</span> (p. 78, 90) and define the trivariate copula density as
+<p>We use <span class="citation">Czado (<a href="#ref-czado2019">2019</a>)</span> (p. 78, 90) and define the trivariate copula density as<br />
 <span class="math display" id="eq:simpvinecopdf">\[
 c_{123}(u_1, u_2, u_3|\theta) = c_{12}(u_1, u_2|\theta_{12}) \cdot  c_{23}(u_2, u_3|\theta_{23})  \cdot c_{13|2}(u_1|u_2, u_3|u_2\mid \theta_{13|2})
-\tag{4.11}
+\tag{4.10}
 \]</span>
 where <span class="math inline">\(u_i|u_j = F_{i|j}(x_i|x_j)\)</span> denotes the conditional probability.
-Note that this copula density is based on the simplifying assumption for vines (<span class="citation">Czado (<a href="#ref-czado2019">2019</a>)</span> p.90, <span class="citation">Vatter and Nagler (<a href="#ref-nagler2018">2018</a>)</span>) which means
+Note that this copula density is based on the simplifying assumption for vines (<span class="citation">Czado (<a href="#ref-czado2019">2019</a>)</span> p. 90, <span class="citation">Vatter and Nagler (<a href="#ref-nagler2018">2018</a>)</span>) which means
 that the conditional bivariate density <span class="math inline">\(c_{13|2}\)</span> is independent of exact <span class="math inline">\(x_2\)</span> values.
 It only depends on the conditional probabilities.<br />
 Visible from the number of parameters in the <span class="math inline">\(\theta\)</span>-vector, vines are able to capture all <span class="math inline">\(3\)</span> distinct
@@ -767,38 +709,23 @@ the dependence structure is allowed to change from pair to pair.</p>
 Thus, the following briefly introduces the pseudo maximum likelihood (ML) approach.
 Also, we give a reminder on the Akaike Information Criterion (AIC) as it is our information criterion of choice to select a copula model.</p>
 <p>To avoid assumptions on the marginal distributions,
-we estimate the parameter vector <span class="math inline">\(\theta\)</span> using the pseudo-likelihood proposed by <span class="citation">Genest, Ghoudi, and Rivest (<a href="#ref-genest1995">1995</a>)</span>
+we estimate the parameter vector <span class="math inline">\(\theta\)</span> using the pseudo-likelihood proposed by <span class="citation">Genest, Ghoudi, and Rivest (<a href="#ref-genest1995">1995</a>)</span><br />
 <span class="math display" id="eq:pseudologlik">\[
 \hat{\theta} = argmax_\theta\ l(\theta) = argmax_\theta\ \sum_{k = 1}^{n}log[c(u_{1k}, u_{2k}, u_{3k}|\theta)],
-\tag{4.12}
+\tag{4.11}
 \]</span>
 where <span class="math inline">\(u_{ik}\)</span> denotes the marginal empirical distribution function scaled by <span class="math inline">\(\frac{n}{n+1}\)</span>.
 These transformed variables are refered to as pseudo-observations.
 Depending on the copula model, the definition of the copula density follows either from
-equation <a href="flood-frequency-analysis.html#eq:defFNAC">(4.9)</a> or <a href="flood-frequency-analysis.html#eq:simpvinecopdf">(4.11)</a>.
+equation <a href="flood-frequency-analysis.html#eq:defFNAC">(4.9)</a> or <a href="flood-frequency-analysis.html#eq:simpvinecopdf">(4.10)</a>.
 Thus, the exact estimation process slightly differs between copula models.<br />
-The AIC is given by <span class="citation">Fahrmeir et al. (<a href="#ref-fahrmeir2013">2013</a>)</span> (p. 164) as
+The AIC is given by <span class="citation">Fahrmeir et al. (<a href="#ref-fahrmeir2013">2013</a>)</span> (p. 164) as<br />
 <span class="math display" id="eq:AIC">\[
 AIC = -2 l(\hat{\theta}) + 2 (|M| + 1)
-\tag{4.13}
+\tag{4.12}
 \]</span>
 where <span class="math inline">\(l(\hat{\theta})\)</span> represents the log-likelihood of the copula model fit and <span class="math inline">\(|M|\)</span> the number of parameters included in the model.
 We select that copula model with the smallest AIC.</p>
-<!-- ### Empirical Copula {#EmpC} -->
-<!-- ADD SOURCES FOR MY STATEMENTS -->
-<!-- The probability integral transform (pit) is a transformation that allows -->
-<!-- to map any random variable $X$ into standard uniform space $U(0, 1)$. -->
-<!-- It is a general theorem not specific to copulas as mentioned in -->
-<!-- @durante2016 (p. 6), but it helps to understand Sklar's theorem. -->
-<!-- The theorem is given by @hofert (p. 3): Let $F$ be a continuous CDF and -->
-<!-- let random variable $X$ have CDF $F$, that is $X \sim F$. Then $F(X)$ is -->
-<!-- a standard uniform random variable, that is, $F(X) \sim U(0, 1)$. -->
-<!-- TODO: Empirical PIT Empirical PIT is based on the empirical distribution -->
-<!-- function\ -->
-<!-- introduce pseudo-obs -->
-<!-- Thus, pit provides the mechanism to transform the marginals into standard uniform variables, which is required by Sklar's Theorem.  -->
-<!-- Pit is more of a prerequisit  -->
-<!-- The copula utilizes these transformed variables to describe the dependence structure independent of the original marginals.  -->
 </div>
 <div id="gev" class="section level3 hasAnchor" number="4.3.8">
 <h3><span class="header-section-number">4.3.8</span> Identifying univariate margins<a href="flood-frequency-analysis.html#gev" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -807,8 +734,8 @@ empirical distribution function, an empirical function has undesired properties 
 That is, during the estimation process, the empirical distribution functions ensures we
 do not affect the copula model fit by missspecifying the marginal distributions.
 However, after fitting the copula, whenever the inverse of the empirical distribution is applied, it bins any continuous data because it is a step-wise function. This, of course, limits the power of our copula analysis.
-Thus, we decided to fit a Generalized Extreme Values (GEV) distribution to the marginal distribution only for re-transforming any results from the fitted copula models.</p>
-<p>The distribution function for the GEV family is given by <span class="citation">Coles (<a href="#ref-coles2001">2001</a>)</span> (p. 47)
+Thus, we decided to fit a Generalized Extreme Value (GEV) distribution to the marginal distribution only for re-transforming any results from the fitted copula models.
+The distribution function for the GEV family is given by <span class="citation">Coles (<a href="#ref-coles2001">2001</a>)</span> (p. 47)<br />
 <span class="math display">\[
 G(z) = \exp\left\{ -\left[ 1 + \xi \left( \frac{z - \mu}{\sigma} \right) \right]^{-1/\xi} \right\},
 \]</span>
@@ -828,29 +755,22 @@ discordant pairs. Concordance means that the two variables move in the same
 direction while discordance means moving in opposite directions.<br />
 <span class="citation">L. Zhang and Singh (<a href="#ref-zhang2019">2019</a>)</span> (p. 86) and <span class="citation">Nelsen (<a href="#ref-nelsen2006">2006</a>)</span> (p. 159,
 161 - 164) show that Kendall’s <span class="math inline">\(\tau\)</span> is directly connected to the generator function and, thus,
-a function in the parameter <span class="math inline">\(\theta\)</span>.
+a function in the parameter <span class="math inline">\(\theta\)</span>.<br />
 <span class="math display" id="eq:cKendall">\[
 \tau(t)= 4 \int_0^1 \frac{\phi(t|\theta)}{\phi&#39;(t|\theta)}dt + 1
-\tag{4.14}
+\tag{4.13}
 \]</span>
 where <span class="math inline">\(\phi&#39;(t|\theta)\)</span> denotes the derivative of the generator function. Note that this relation is positive
 which is seen in <span class="citation">L. Zhang and Singh (<a href="#ref-zhang2019">2019</a>)</span> (p. 134). That is, if the parameter of copula increases, the strength of dependence
 increases. Vice versa, if correlation increases, <span class="math inline">\(\theta\)</span> increases, too. Also, note that this implies that
 estimating a <span class="math inline">\(\theta\)</span> implicitly estimates a <span class="math inline">\(\tau\)</span> value.
-This is a relation we will use during our simulation.
-<!-- As we can see from equation <a href="flood-frequency-analysis.html#eq:cKendall">(4.14)</a>, Kendall's $\tau$ - a -->
-<!-- measure of association - can be expressed in terms of the copula -->
-<!-- function only. It emphasizes once more that the copula captures the -->
-<!-- whole dependence structure between variables independent of any marginal -->
-<!-- distribution functions. An alternative representation of $\tau$ is in -->
-<!-- terms of the generator. We will mostly use this relation to estimate -->
-<!-- Kendall's $\tau$ under (wrongfully) assumed symmetry. --></p>
-<p>Empirically, there are multiple versions of Kendall’s <span class="math inline">\(\tau\)</span> depending
+This is a relation we will use during our simulation.<br />
+Empirically, there are multiple versions of Kendall’s <span class="math inline">\(\tau\)</span> depending
 on the data structure. Since this paper focuses on continuous variables
-only, the formula given by <span class="citation">Kendall and Gibbons (<a href="#ref-kendall1990">1990</a>)</span> (p. 5) is applicable
+only, the formula given by <span class="citation">Kendall and Gibbons (<a href="#ref-kendall1990">1990</a>)</span> (p. 5) is applicable<br />
 <span class="math display" id="eq:eKendall">\[
 t = \frac{P-Q}{\frac{1}{2}n(n-1)}.
-\tag{4.15}
+\tag{4.14}
 \]</span>
 <span class="math inline">\(P\)</span> denotes the number of concordant and <span class="math inline">\(Q\)</span> the number of
 discordant pairs in the data.</p>
@@ -858,14 +778,14 @@ discordant pairs in the data.</p>
 <div id="software" class="section level3 hasAnchor" number="4.3.10">
 <h3><span class="header-section-number">4.3.10</span> Software<a href="flood-frequency-analysis.html#software" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The whole analysis is implemented using the programming language R.
-We used the <code>hydroEvents</code> package by <span class="citation">Wasko and Guo (<a href="#ref-wasko2025">2025</a>)</span>
-<code>eventBaseflow</code>. This method relies on the BFI as explained in the data section using a deftault BFI of <span class="math inline">\(0.5\)</span>. ,
-Additionally, <code>eventBaseflow</code> function calculates the BFI at each time step and extracts discrete flood events when the BFI falls below the specified threshold for a user-specified minimum duration.
+We used the <code>hydroEvents</code> package by <span class="citation">Wasko and Guo (<a href="#ref-wasko2025">2025</a>)</span>.
+This method relies on the BFI as explained in the data section using a deftault BFI of <span class="math inline">\(0.5\)</span>.
+Additionally, the <code>eventBaseflow</code> function calculates the BFI at each time step and extracts discrete flood events when the BFI falls below the specified threshold for a user-specified minimum duration.
 For copulas, we relied on the <code>copula</code> package by
 <span class="citation">Hofert et al. (<a href="#ref-hofert2025">2025</a>)</span> and the <code>pobs</code> function to apply the empirical distribution function as described in section <a href="flood-frequency-analysis.html#est">4.3.7</a>.
 FNACs are dealt with using the
 <code>HAC</code> by <span class="citation">Okhrin and Ristig (<a href="#ref-okhrin2014">2014</a>)</span>, especially the
-function.
+function
 <code>estimate.copula</code> for FNAC fitting which implements the ML approach from section <a href="flood-frequency-analysis.html#est">4.3.7</a>. This required
 some additional code to select the best fitting copula according to the AIC.
 For vine copulas,
@@ -879,16 +799,12 @@ Finally, GEV distribution were fitted using the function
 </div>
 <div id="sim" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Simulation<a href="flood-frequency-analysis.html#sim" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<!-- Bias well visible for low high high where the bottom line is not reach at all, -->
-<!-- howeer, this goes for all considered correlation structures.  -->
-<!-- That is, also for the river correlations suggesting that using  -->
-<!-- FNACs on our real world data leadst to the this observed bias  -->
 <p>To examine the incapability of FNACs to capture <span class="math inline">\(3\)</span> distinct dependence structures in a trivariate
 setting, we ran a simulation.
 The true underlying model builds a vine copula models.
 This section is limited to the most crucial finding
 which is highly relevant for the interpretation of our results in the following section.</p>
-<p>We set up the simulation by drawing <span class="math inline">\(27000\)</span> random samples of size <span class="math inline">\(15, 30, 50, 1000\)</span>.
+We set up the simulation by drawing <span class="math inline">\(27000\)</span> random samples of size <span class="math inline">\(15, 30, 50, 1000\)</span>.
 The sample size of <span class="math inline">\(50\)</span> represents our real world conditions while <span class="math inline">\(1000\)</span> observations aim to examine large sample behavior. The two smaller samples sizes are interesting because we earlier decided to remove stations due to their small
 sample size.<br />
 For each drawn sample,
@@ -897,15 +813,15 @@ First, each copula density
 of the underlying vine copula model is allowed to be of one of the copula families
 listed in table <a href="flood-frequency-analysis.html#tab:generators">4.1</a> leading to a possible total of <span class="math inline">\(3^3 = 27\)</span> copula family combinations.
 Second, we allowed for <span class="math inline">\(4\)</span> different correlation values, <span class="math inline">\(2\)</span> of which correspond to the observed average
-correlation values in the Isar and the Danube. The remaining <span class="math inline">\(2\)</span> aimed to examine general behavior of FNACs. That is, we added a Low-Medium-High correlation structure with correlation values of <span class="math inline">\(0.1, 0.5, 0.85\)</span> and a
-Low-High-High structure using <span class="math inline">\(0.1, 0.8, 0.8\)</span>.<br />
+correlation values in the Isar and the Danube. The remaining <span class="math inline">\(2\)</span> aimed to examine general behavior of FNACs. That is, we added a Low-Medium-High (LMH) correlation structure with correlation values of <span class="math inline">\(0.1, 0.5, 0.85\)</span> and a
+Low-High-High (LHH) structure using <span class="math inline">\(0.1, 0.8, 0.8\)</span>.<br />
 Thereby, we had <span class="math inline">\(27000\)</span> data points per sample size which are split among all <span class="math inline">\(27\)</span> possible copula family combinations
 and <span class="math inline">\(4\)</span> possible correlation structures. This leads to roughly <span class="math inline">\(\frac{27000}{4\cdot 27} = 250\)</span> data points per setup.
 It is not exactly <span class="math inline">\(250\)</span> because we used a uniform draw to select copula families and correlation
-structure as it drastically simplified implementation.</p>
+structure as it drastically simplified implementation.<br />
 The one result we want to focus on is described in figure <a href="flood-frequency-analysis.html#fig:simresults">4.5</a>.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:simresults"></span>
-<img src="work/04-floodfreq/figures/sim_NAC_if_Vine_DPG.png" alt="The simulation results by sample size and correlation structure." width="100%" />
+<img src="work/04-floodfreq/figures/sim_NAC_if_Vine_DPG.png" alt="The simulation results by sample size and correlation structure." width="90%" />
 <p class="caption">
 FIGURE 4.5: The simulation results by sample size and correlation structure.
 </p>
@@ -917,11 +833,10 @@ copula family combination leading to roughly <span class="math inline">\(\frac{2
 The black lines in each subplot refers to the true underlying correlation values.
 The name of the corresponding
 correlation structure is to the right hand side of the plot.
-Additionally, the figure is divided by the sample size on which the estimated FNAC model is based. From a
+Additionally, the figure is divided by the sample size on which the estimated FNAC model is based on. From a
 sample size of <span class="math inline">\(15\)</span> on the left up to a size of <span class="math inline">\(1000\)</span> on the right.
-Color-wise, the red line refers to the <span class="math inline">\(\tau\)</span> of the nested FNAC and the blue line to the outer estimate.
-Due to the sufficient nesting condition (see section <a href="flood-frequency-analysis.html#nacs">4.3.5</a>), the inner <span class="math inline">\(\tau\)</span> in each iteration<br />
-is always larger than the outer.<br />
+Color-wise, the red line refers to the <span class="math inline">\(\hat{\tau}\)</span> of the nested FNAC and the blue line to the outer estimate.
+Due to the sufficient nesting condition (see section <a href="flood-frequency-analysis.html#nacs">4.3.5</a>), the inner <span class="math inline">\(\hat{\tau}\)</span> in each iteration is always larger than the outer.<br />
 The first observation is the decrease in variance of the estimators as the sample size increases. This holds for
 all possible correlation structures and was expected.
 Now, focus only on the column of sample size <span class="math inline">\(1000\)</span>. Especially in the Low-Medium-High subplot,
@@ -932,7 +847,7 @@ We conclude that, first, the <span class="math inline">\(\tau\)</span> estimate 
 for large sample sizes. This is similar to what <span class="citation">Grimaldi and Serinaldi (<a href="#ref-grimaldi2006">2006</a>)</span> found in their work when they examined
 how SACs perform if the true underlying model is a FNAC.
 Second, and highly relevant for our analysis,
-the <span class="math inline">\(\tau\)</span> based on the outer copula of a FNAC
+the <span class="math inline">\(\hat{\tau}\)</span> based on the outer copula of a FNAC
 tends towards the second largest correlation value in the (simulated) data.
 This implies that, due to the same copula margins mentioned in section <a href="flood-frequency-analysis.html#nacs">4.3.5</a>, FNACs systematically
 overestimate the weakest dependence strength.
@@ -949,7 +864,7 @@ effect of the bias in FNACs and its practical meaning.</p>
 The following discusses the goodness of fit for the vine copula model
 based on the Munich station using figure <a href="flood-frequency-analysis.html#fig:visualGoF">4.6</a>.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:visualGoF"></span>
-<img src="work/04-floodfreq/figures/app_visualGOF.png" alt="The contour lines and synthetic data plots for the Munich station." width="100%" />
+<img src="work/04-floodfreq/figures/app_visualGOF.png" alt="The contour lines and synthetic data plots for the Munich station." width="70%" />
 <p class="caption">
 FIGURE 4.6: The contour lines and synthetic data plots for the Munich station.
 </p>
@@ -971,11 +886,11 @@ The largest absolute difference between the correlation values is just <span cla
 <table>
 <caption><span id="tab:corrvalues">TABLE 4.2: </span> Describtives on the fitted copula model for Munich station.</caption>
 <colgroup>
-<col width="19%" />
-<col width="22%" />
-<col width="21%" />
-<col width="17%" />
-<col width="19%" />
+<col width="24%" />
+<col width="24%" />
+<col width="18%" />
+<col width="14%" />
+<col width="16%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1030,7 +945,7 @@ dependence. Thus, given a large peak, the flood volume tends to be large, too.</
 we extend the tail dependence analysis from the previous section to all considered stations.</p>
 Contemplate figure <a href="flood-frequency-analysis.html#fig:bavariaTaildep">4.7</a> for a visual assessment of the tail dependence structure.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:bavariaTaildep"></span>
-<img src="work/04-floodfreq/figures/app_bavaria_taildep.png" alt="The signed tail dependencies of the three variable combinations." width="100%" />
+<img src="work/04-floodfreq/figures/app_bavaria_taildep.png" alt="The signed tail dependencies of the three variable combinations." width="70%" />
 <p class="caption">
 FIGURE 4.7: The signed tail dependencies of the three variable combinations.
 </p>
@@ -1040,11 +955,11 @@ The subplots are based on figure <a href="flood-frequency-analysis.html#fig:bava
 tail dependence value.
 Because we only allowed for copula families with either upper, lower or no tail dependence,
 we visualize the signed tail dependence.
-That is, upper tail dependence values remain unchanged, but lower tail dependencies are multiplies by
+That is, upper tail dependence values remain unchanged, but lower tail dependencies are multiplied by
 <span class="math inline">\(-1\)</span>. Thereby, the blacker a station is colored in, the stronger the lower tail dependence and the more
 purple the stronger the upper tail dependence. A totally white point on the map refers to no tail dependence.
 In these cases, a Frank copula has been fitted to the variable pair.<br />
-In general, we observe lighter colors for the duration and peak pairs which is due to the rather
+In general, we observe lighter colors for the duration-peak pairs which is due to the rather
 small correlation values. This follows from the reasoning in the previous section.
 Duration and volume exhibit the darkest colors suggesting that if the flood duration is short, the
 flood volume tends to be small, too, for the majority of the considered stations.
@@ -1057,32 +972,31 @@ Across all three pairs, the Isar consistently demonstrates more extreme tail dep
 <h3><span class="header-section-number">4.5.3</span> Event Probability<a href="flood-frequency-analysis.html#event-probability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The following examines the difference between a univariate and the multivariate approach
 for flood characterization and thereby addresses one of our research questions.
-<!-- We now examine how flood event probabilities differ between a univariate and multivariate approach.  -->
 To answer it, the
 following focuses on the flood event in Munich 2024
 which had a peak of <span class="math inline">\(462m^3/s\)</span>, took <span class="math inline">\(20\)</span> days and had a volume of <span class="math inline">\(406m^3\)</span>.</p>
 Figure <a href="flood-frequency-analysis.html#fig:probUni">4.8</a> displays the marginal fit of a GEV distribution to the peak data for the Munich station.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:probUni"></span>
-<img src="work/04-floodfreq/figures/app_univariate_hq.png" alt="The GEV fit for the Munich station. The red area delineates floods with a peak equal or higher to the flood event of 2024." width="100%" />
+<img src="work/04-floodfreq/figures/app_univariate_hq.png" alt="The GEV fit for the Munich station. The red area delineates floods with a peak equal or higher to the flood event of 2024." width="50%" />
 <p class="caption">
 FIGURE 4.8: The GEV fit for the Munich station. The red area delineates floods with a peak equal or higher to the flood event of 2024.
 </p>
 </div>
-<p>The x-axis of this plot denotes the peak values, the y-axis the density of the fitted GEV model.
+The x-axis of this plot denotes the peak values, the y-axis the density of the fitted GEV model.
 The histogram displays the original data to which the GEV distribution was fitted. The resulting smooth distribution
 is marked by the blue line. The red vertical line marks the peak value of <span class="math inline">\(462m^3/s\)</span> and
 the the shaded area visualizes the probability
 to observe a peak at least as large. Based on the GEV fit, the probability is calculated to be
 <span class="math inline">\(19\%\)</span>. Thereby, this approach assigns the a
 return period of such a peak to be <span class="math inline">\(\frac{1}{0.19} \approx5\)</span> years.
-Thus, Characterizing the whole flood event only by its peak,
-the return period of the whole flood in Munich of 2024 according to the univariate model is <span class="math inline">\(5\)</span> years.</p>
+Thus, characterizing the whole flood event only by its peak,
+the return period of the whole flood in Munich of 2024 according to the univariate model is <span class="math inline">\(5\)</span> years.<br />
 The trivariate copula model allows to also consider volume and duration values to characterize a flood event.
 Figure <a href="flood-frequency-analysis.html#fig:probMulti">4.9</a> is based on figure <a href="flood-frequency-analysis.html#fig:visualGoF">4.6</a> and visualizes
 how the multivariate model determines the probability for a flood event to be at least as severe.
 Also, this plot helps to understand the quite stark differences in the probabilities.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:probMulti"></span>
-<img src="work/04-floodfreq/figures/app_multivariate_hq.png" alt="The copula fit for the Munich station. The red area delineates floods with a peak, volume and duration equal or higher to the flood event of 2024." width="100%" />
+<img src="work/04-floodfreq/figures/app_multivariate_hq.png" alt="The copula fit for the Munich station. The red area delineates floods with a peak, volume and duration equal or higher to the flood event of 2024." width="70%" />
 <p class="caption">
 FIGURE 4.9: The copula fit for the Munich station. The red area delineates floods with a peak, volume and duration equal or higher to the flood event of 2024.
 </p>
@@ -1117,10 +1031,10 @@ station specific GEV distributions onto the observed peak values and determine p
 for the return periods of <span class="math inline">\(2, 5, 10, 20\)</span> and <span class="math inline">\(50\)</span> years.
 We choose the upper bound of <span class="math inline">\(50\)</span> years to validate the model predictions using the available data.
 Conditional on these peaks, the most likely combination of duration and volume are determined as well as
-the average discharge values calculated and standardized.
+the average discharge values.
 Figure <a href="flood-frequency-analysis.html#fig:modelEval">4.10</a> is based on figure <a href="flood-frequency-analysis.html#fig:condEmpBoxplots">4.4</a> and displays our results.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:modelEval"></span>
-<img src="work/04-floodfreq/figures/app_modeleval.png" alt="The model comparison by river between FNACs and vines." width="100%" />
+<img src="work/04-floodfreq/figures/app_modeleval.png" alt="The model comparison by river between FNACs and vines." width="70%" />
 <p class="caption">
 FIGURE 4.10: The model comparison by river between FNACs and vines.
 </p>
@@ -1134,8 +1048,7 @@ This is reasonable because the manner in which an event is extreme depends on th
 behavior in boxplot and model prediction suggests a good fit.
 For FNACs, consider their performance within the stations of the Isar first. There is a visible
 difference in model performance depending on which variable pair has a larger correlation value.
-If volume
-and peak
+If volume-peak
 have a larger correlation value,
 the model captures the underlying data structure more reliable than for
 volume and duration being stronger correlated pair.
@@ -1155,20 +1068,20 @@ However,
 take these with a grain of salt because especially for a return period of <span class="math inline">\(50\)</span> years,
 we deal with an extreme event.
 And it is reasonable to expect extreme events to be highly station specific.
-Thereby, a model perfectly predicting the median of the average discharge data is desirable.<br />
+Thereby, a model perfectly predicting the median of the average discharge data is not necessarily desirable.<br />
 The reason for the underperformance of FNACs is their incapability of capturing <span class="math inline">\(3\)</span> unique dependence structures
 which leads to <span class="math inline">\(2\)</span> distinct effects.
 First and mainly, due to the shared bivariate marginal copula, the performance of FNAC models is
 highly impacted by which variable pair is higher correlated. Because by the sufficient nesting condition,
 the stronger correlated variable pair is required to build the nested copula.
-If duration - volume is the higher correlated pair and, thus, peak in the outer copula,
-the dependence between duration - peak and volume - peak is forced to be identical. Thereby, conditioning on
+If duration-volume is the higher correlated pair and, thus, peak in the outer copula,
+the dependence between duration-peak and volume-peak is forced to be identical. Thereby, conditioning on
 a peak value has the identical effect on both nested variables.
-However, if peak is inside the nested copula, duration - peak and volume - peak remain a distinct
-relation structure to peak. Thereby, both models are wrong, but one of them remains more flexible.
+However, if peak is inside the nested copula, duration-peak and volume-peak remain a distinct
+relation structure to peak. Thereby, both models are wrong, but one of them remains more flexible.<br />
 The second effect is independent of the nesting structure. As result of the simulation we observed a systematic
 overestimation of the lower correlation value. Because in our data, the smallest correlation
-value is always between duration - peak, this strength of dependence is systematically overestimated.
+value is always between duration-peak, this strength of dependence is systematically overestimated.
 This implies that an increase in peak affect duration more than it should. And because
 all observed correlation values between the two variable are positive, the duration of a flood
 for given an increasing peak is always overestimated. This implies that the average discharge predicted by

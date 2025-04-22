@@ -46,7 +46,6 @@ tab:generators
 eq:uppertaildep
 eq:lowertaildep
 eq:defFNAC
-eq:defgFNAC
 eq:simpvinecopdf
 eq:pseudologlik
 eq:AIC
@@ -125,6 +124,8 @@ results-from-dynamical-adjustment
 results-from-ensemble-boosting
 flood-frequency-analysis
 intro
+data_ff
+methods_ff
 cops
 sklarstheorem
 archcops
